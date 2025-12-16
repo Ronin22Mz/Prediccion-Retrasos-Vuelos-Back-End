@@ -1,58 +1,39 @@
-# Predicción de Retrasos de Vuelos
+# Predicción de Retrasos de Vuelos – Back-End
 # Descripción del proyecto
 
-Predicción de Retrasos de Vuelos es un proyecto cuyo objetivo es estimar si un vuelo será puntual o sufrirá un retraso antes de su despegue, utilizando datos históricos de vuelos. A partir de información como aerolínea, aeropuerto de origen y destino, fecha y hora de salida y distancia del vuelo, el sistema genera una predicción que permite anticiparse a posibles problemas operativos.
+Este repositorio contiene el desarrollo del Back-End del proyecto Predicción de Retrasos de Vuelos. Su función principal es exponer la capacidad predictiva del modelo de Data Science mediante una API REST accesible en tiempo real.
 
-Los retrasos aéreos afectan a pasajeros, aerolíneas y aeropuertos, generando insatisfacción, costos adicionales y dificultades logísticas. Este proyecto busca ofrecer una solución predictiva que ayude a mejorar la planificación y la toma de decisiones, desarrollándose como un producto mínimo viable que integra ciencia de datos, Back-End y Front-End.
-
-# Objetivo general
-
-Desarrollar un sistema que reciba información de un vuelo y devuelva si probablemente será puntual o retrasado, junto con la probabilidad asociada a dicha predicción.
-
-# Alcance del proyecto
-
-El proyecto se enfoca en una clasificación binaria de vuelos:
-
-Puntual
-
-Retrasado
-
-Se prioriza un enfoque simple, claro y funcional, adecuado para un MVP académico y demostrativo.
-
-# Arquitectura del sistema
-
-La solución está compuesta por tres áreas principales que trabajan de forma integrada:
-
-Data Science
-
-Back-End
-
-Front-End
-
-Cada área cumple un rol específico dentro del flujo general del sistema.
-
-# Área de Back-End
-Descripción
-
-El área de Back-End desarrolla una API REST que expone la funcionalidad de predicción del modelo de Data Science. Esta API permite que otros sistemas consulten, de manera estructurada, si un vuelo tiene riesgo de retraso.
-
-La API recibe los datos del vuelo, valida la información de entrada y devuelve una respuesta clara con la predicción y la probabilidad asociada.
+La API permite que aplicaciones externas envíen información de un vuelo y reciban una predicción clara sobre su posible retraso, junto con la probabilidad asociada.
 
 # Objetivo
 
-Proveer un servicio REST que permita consultar predicciones de retrasos de vuelos en tiempo real.
+Proveer un servicio REST que permita consultar predicciones de retrasos de vuelos de forma confiable y estructurada.
 
-# Funcionalidades
+# Alcance
 
-Recepción de datos del vuelo.
+Implementación de la API REST.
 
-Validación de campos obligatorios.
+Validación de datos de entrada.
 
 Integración con el modelo predictivo.
 
-Manejo de errores.
+Manejo de errores y respuestas estandarizadas.
 
-Respuestas estandarizadas en formato JSON.
+# Funcionalidades
+
+Recepción de datos del vuelo mediante solicitudes HTTP.
+
+Validación de campos obligatorios.
+
+Consulta al modelo de predicción.
+
+Respuesta con estado del vuelo y probabilidad.
+
+Manejo de errores y mensajes claros.
+
+# Flujo de funcionamiento
+
+La API recibe los datos del vuelo, valida la información y consulta el modelo entrenado. Como resultado, devuelve una respuesta en formato JSON que indica si el vuelo será puntual o retrasado.
 
 # Entregables
 
@@ -61,3 +42,7 @@ API REST funcional.
 Documentación básica de uso.
 
 Ejemplos de solicitudes y respuestas.
+
+# Tecnologías utilizadas
+
+Java, Spring Boot y APIs REST.
