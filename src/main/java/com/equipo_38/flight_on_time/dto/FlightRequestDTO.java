@@ -8,38 +8,38 @@ import java.time.LocalDateTime;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record FlightRequestDTO(
 
-        @NotBlank
-        @Size(min = 2, max = 2)
-        @Pattern(regexp = "[a-zA-Z0-9]{2}")
+        @NotBlank(message = "{flight.airline.notBlank}")
+        @Size(min = 2, max = 2, message = "{flight.airline.size}")
+        @Pattern(regexp = "[a-zA-Z0-9]{2}", message = "{flight.airline.pattern}")
         String airline,
 
-        @NotBlank
-        @Size(min = 3, max = 3)
-        @Pattern(regexp = "[a-zA-Z]{3}")
+        @NotBlank(message = "{flight.airline.notBlank}")
+        @Size(min = 3, max = 3, message = "{flight.origin.size}")
+        @Pattern(regexp = "[a-zA-Z]{3}", message = "{flight.origin.pattern}")
         String origin,
 
-        @NotBlank
-        @Size(min = 3, max = 3)
-        @Pattern(regexp = "[a-zA-Z]{3}")
+        @NotBlank(message = "{flight.destination.notBlank}")
+        @Size(min = 3, max = 3, message = "{flight.destination.size}")
+        @Pattern(regexp = "[a-zA-Z]{3}", message = "{flight.destination.pattern}")
         String destination,
 
-        @NotNull
-        @FutureOrPresent
+        @NotNull(message = "{flight.departureDate.notNull}")
+        @FutureOrPresent(message = "{flight.departureDate.future}")
         LocalDateTime departureDate,
 
-        @NotNull
-        @Positive
-        @DecimalMin(value = "2.0")
-        @DecimalMax(value = "20000.0")
+        @NotNull(message = "{flight.distance.notNull}")
+        @Positive(message = "{flight.distanceKm.positive}")
+        @DecimalMin(value = "2.0", message = "{flight.distance.min}")
+        @DecimalMax(value = "20000.0", message = "{flight.distance.max}")
         Double distanceKm
 ) {
-    @AssertTrue(message = "Origin and destination must be different")
+    @AssertTrue(message = "{flight.route.invalid}")
     public boolean isValidRoute() {
         return origin != null && destination != null && !origin.equals(destination);
     }
 
-    @AssertTrue(message = "Departure date must not be more than one year in the future")
-    public boolean isValidDepartureDate(){
+    @AssertTrue(message = "{flight.departureDate.max}")
+    public boolean isValidDepartureDate() {
         return departureDate.isBefore(LocalDateTime.now().plusYears(1));
     }
 }
