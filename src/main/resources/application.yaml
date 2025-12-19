@@ -1,3 +1,8 @@
 spring:
   application:
     name: flight-on-time
+
+#Client URL
+ds:
+  api:
+    url: ${DATA_SCIENCE_API_PREDICTION}
