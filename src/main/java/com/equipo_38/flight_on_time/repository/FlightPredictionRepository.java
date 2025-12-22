@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface FlightPredictionRepository  extends JpaRepository<Long, PredictionFlight> {
+public interface FlightPredictionRepository  extends JpaRepository<PredictionFlight, Long> {
 
 
 }
