@@ -6,3 +6,10 @@ spring:
 ds:
   api:
     url: ${DATA_SCIENCE_API_PREDICTION}
+
+#SpringDocs config
+springdoc:
+  swagger-iu:
+    path: ${SWAGGER_IU_CONNECTION:/docs/swagger-ui.html}
+  api-docs:
+    path: ${SPRING_DOCS_CONNECTION:/docs/api-docs}
