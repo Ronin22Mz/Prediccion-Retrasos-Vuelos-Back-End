@@ -2,9 +2,7 @@ package com.equipo_38.flight_on_time.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -17,7 +15,6 @@ import java.time.LocalDateTime;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 public class PredictionFlight {
-
 
     //inputs
     @Id
@@ -39,13 +36,8 @@ public class PredictionFlight {
     private Double distanceKm;
 
     //outputs
+    @Enumerated(EnumType.STRING)
     private FlightStatus predictionResult;
 
     private Double probability;
-
-
-
-
-
-
 }
