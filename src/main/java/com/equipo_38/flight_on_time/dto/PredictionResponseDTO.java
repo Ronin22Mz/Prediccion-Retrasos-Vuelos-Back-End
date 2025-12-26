@@ -1,7 +1,9 @@
 package com.equipo_38.flight_on_time.dto;
 
+import com.equipo_38.flight_on_time.model.FlightStatus;
+
 public record PredictionResponseDTO(
-        String forecast,
+        FlightStatus forecast,
         Double probability
         ) {
 }

@@ -40,7 +40,7 @@ public class FlightServiceImpl implements IFlightService {
 
     private PredictionResponseDTO mapToClientResponse(PredictionDSResponseDTO predictionDSResponseDTO) {
         return new PredictionResponseDTO(
-                predictionDSResponseDTO.probability() == 0 ? FlightStatus.ON_TIME.name() : FlightStatus.DELAYED.name(),
+                predictionDSResponseDTO.prediction() == 0 ? FlightStatus.ON_TIME : FlightStatus.DELAYED,
                 predictionDSResponseDTO.probability()
         );
     }
@@ -52,7 +52,7 @@ public class FlightServiceImpl implements IFlightService {
         predictionFlight.setDestination(flightRequestDTO.destination());
         predictionFlight.setDepartureDate(flightRequestDTO.departureDate());
         predictionFlight.setDistanceKm(flightRequestDTO.distanceKm());
-        // predictionFlight.setPredictionResult(predictionResponseDTO.forecast());
+        predictionFlight.setPredictionResult(predictionResponseDTO.forecast());
         predictionFlight.setProbability(predictionResponseDTO.probability());
         flightPredictionRepository.save(predictionFlight);
     }
