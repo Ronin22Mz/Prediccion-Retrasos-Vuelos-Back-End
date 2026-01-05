@@ -1,0 +1,93 @@
+# ==============================
+# Profile: dev
+# Configuración para ENTORNO DE DESARROLLO
+# Base de datos PostgreSQL local
+# ==============================
+
+spring:
+  # ------------------------------
+  # Configuración JPA / Hibernate
+  # ------------------------------
+  jpa:
+    # Mantiene la sesión de Hibernate abierta durante la vista
+    # Útil en desarrollo para evitar LazyInitializationException
+    # ⚠️ No recomendado en producción
+    open-in-view: true
+
+    # Muestra las sentencias SQL en consola
+    show-sql: true
+
+    properties:
+      hibernate:
+        # Formatea el SQL para que sea legible
+        format_sql: true
+
+        # Muestra comentarios útiles generados por Hibernate
+        use_sql_comments: true
+
+  # ------------------------------
+  # Configuración del DataSource
+  # ------------------------------
+  datasource:
+    # URL de conexión a PostgreSQL local
+    # sslmode=prefer: usa SSL si está disponible
+    # connect_timeout=10: timeout de conexión (segundos)
+    url: jdbc:postgresql://localhost:5432/prediction_db?sslmode=prefer&connect_timeout=10
+
+    # Credenciales por variables de entorno
+    # Evita exponer datos sensibles en el repositorio
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+    # Driver JDBC
+    driver-class-name: org.postgresql.Driver
+
+    # ------------------------------
+    # Pool de conexiones HikariCP
+    # ------------------------------
+    hikari:
+      # Nombre del pool (visible en logs)
+      pool-name: PredictionConnectionPool
+
+      # Máximo de conexiones simultáneas
+      # En dev se recomienda bajo para detectar fugas
+      maximum-pool-size: 8
+
+      # Conexiones mínimas inactivas
+      minimum-idle: 4
+
+      # Tiempo máximo de inactividad (ms)
+      idle-timeout: 30000
+
+      # Tiempo máximo de vida de una conexión (ms)
+      max-lifetime: 1800000
+
+      # Tiempo máximo de espera por una conexión (ms)
+      connection-timeout: 20000
+
+      # Detecta fugas de conexión (ms)
+      # Loggea stacktrace si una conexión no se cierra
+      leakDetectionThreshold: 15000
+
+# ------------------------------
+# Configuración de logs (opcional pero recomendado en dev)
+# ------------------------------
+logging:
+  level:
+    # Muestra SQL generado por Hibernate
+    org.hibernate.SQL: DEBUG
+
+    # Muestra valores de parámetros en las queries
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+# ------------------------------
+# SpringDoc / Swagger
+# ------------------------------
+springdoc:
+  swagger-ui:
+    # Habilita Swagger UI en desarrollo
+    enabled: true
+
+  api-docs:
+    # Habilita el endpoint OpenAPI
+    enabled: true
