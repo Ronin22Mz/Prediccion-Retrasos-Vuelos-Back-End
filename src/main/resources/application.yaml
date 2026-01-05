@@ -8,7 +8,7 @@ spring:
 #Client URL
 ds:
   api:
-    url: ${DATA_SCIENCE_API_PREDICTION}
+    url: ${DATA_SCIENCE_API_PREDICTION:http://localhost:8585/api/predict}
 
 #SpringDocs config
 springdoc:
