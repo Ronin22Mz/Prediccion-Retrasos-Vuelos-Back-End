@@ -9,9 +9,12 @@ import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
 import com.equipo_38.flight_on_time.repository.FlightPredictionRepository;
 import com.equipo_38.flight_on_time.service.IFlightService;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class FlightServiceImpl implements IFlightService {
@@ -20,11 +23,19 @@ public class FlightServiceImpl implements IFlightService {
     private final DataScienceClient dataScienceClient;
 
     @Override
+    @CircuitBreaker(name = "dsClientPrediction", fallbackMethod = "clientPredictionFallback")
     public PredictionResponseDTO getPrediction(FlightRequestDTO flightRequestDTO) {
         PredictionDSResponseDTO predictionDSResponseDTO = dataScienceClient.getPrediction(mapToDsRequest(flightRequestDTO));
         PredictionResponseDTO predictionResponseDTO = mapToClientResponse(predictionDSResponseDTO);
         savePrediction(flightRequestDTO, predictionResponseDTO);
         return predictionResponseDTO;
+    }
+
+    public PredictionResponseDTO clientPredictionFallback(FlightRequestDTO flightRequestDTO, Throwable ex) {
+        log.error("DS Client Prediction unavailable", ex);
+        PredictionResponseDTO fallbackResponse = new PredictionResponseDTO(FlightStatus.DELAYED,0.0);
+        savePrediction(flightRequestDTO, fallbackResponse);
+        return fallbackResponse;
     }
 
     private PredictionDSRequestDTO mapToDsRequest(FlightRequestDTO flightRequestDTO) {
