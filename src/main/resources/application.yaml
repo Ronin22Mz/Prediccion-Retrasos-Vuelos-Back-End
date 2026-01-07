@@ -28,3 +28,8 @@ resilience4j:
         waitDurationInOpenState: 2s
         permittedNumberOfCallsInHalfOpenState: 3
         automaticTransitionFromOpenToHalfOpenEnabled: true
+
+#"${rate-limit.ip.request-per-minute}
+rate-limit:
+  ip:
+    request-per-minute: ${RATE_LIMITER_VALUE:60}
