@@ -4,6 +4,7 @@ import com.equipo_38.flight_on_time.exception.CityNotFoundException;
 import com.equipo_38.flight_on_time.repository.ICityRepository;
 import com.equipo_38.flight_on_time.service.ICityService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
