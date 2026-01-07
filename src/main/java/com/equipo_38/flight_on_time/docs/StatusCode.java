@@ -32,8 +32,12 @@ public class StatusCode {
     public static final String CONFLICT = "409";
     public static final String CONFLICT_VALUE = "Conflict";
 
+    public static final String TOO_MANY_REQUESTS = "429";
+    public static final String TOO_MANY_REQUESTS_VALUE = "Too Many Requests";
+
     public static final String UNPROCESSABLE_ENTITY = "422";
     public static final String UNPROCESSABLE_ENTITY_VALUE = "Unprocessable Entity";
+
 
     // 5xx - Errores del servidor
     public static final String INTERNAL_SERVER_ERROR = "500";
