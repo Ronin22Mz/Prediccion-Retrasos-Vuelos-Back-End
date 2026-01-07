@@ -5,4 +5,4 @@ COPY src/main/resources/supabase-crt/prod-ca-2021.crt /app/certificates/prod-ca-
 COPY target/*.jar /app/prediction.jar
 EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "/app/prediction.jar"]
-# docker build --platform=linux/amd64 -t ddnnpp/prediction:latest .
+# docker build --platform=linux/amd64 -t <username>/<tag> <dokerfile-path>
