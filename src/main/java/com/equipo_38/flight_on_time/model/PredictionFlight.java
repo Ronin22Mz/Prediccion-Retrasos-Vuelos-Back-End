@@ -1,10 +1,7 @@
 package com.equipo_38.flight_on_time.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.DecimalMax;
-import jakarta.validation.constraints.DecimalMin;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,6 +29,7 @@ public class PredictionFlight {
 
     @Column(name = "airline", length = 2, nullable = false)
     @NotBlank
+    @Size(min = 2, max = 2)
     private String airline;
 
     @Column(name = "origin",length = 3, nullable = false)
