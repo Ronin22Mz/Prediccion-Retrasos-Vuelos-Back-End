@@ -1,6 +1,5 @@
 package com.equipo_38.flight_on_time.client;
 
-import com.equipo_38.flight_on_time.dto.FlightRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -1,4 +1,4 @@
-INSERT INTO airports (city_name, city_code)
+INSERT INTO cities (city_name, city_code)
 VALUES ('Aberdeen, SD', 'ABR'),
        ('Abilene, TX', 'ABI'),
        ('Adak Island, AK', 'ADK'),
