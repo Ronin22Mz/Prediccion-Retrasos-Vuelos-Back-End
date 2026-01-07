@@ -1,11 +1,11 @@
 package com.equipo_38.flight_on_time.repository;
 
-import com.equipo_38.flight_on_time.model.Airline;
+import com.equipo_38.flight_on_time.model.PredictionFlight;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AirlineRepository extends JpaRepository<Airline, Long> {
+public interface IFlightPredictionRepository extends JpaRepository<PredictionFlight, Long> {
+
+
 }
-
-

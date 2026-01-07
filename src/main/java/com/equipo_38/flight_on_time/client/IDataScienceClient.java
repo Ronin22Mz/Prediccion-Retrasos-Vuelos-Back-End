@@ -1,6 +1,5 @@
 package com.equipo_38.flight_on_time.client;
 
-import com.equipo_38.flight_on_time.dto.FlightRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "ds-flight-prediction", url = "${ds.api.url}")
-public interface DataScienceClient {
+public interface IDataScienceClient {
 
     @PostMapping(value = "/predict",
             consumes = MediaType.APPLICATION_JSON_VALUE,

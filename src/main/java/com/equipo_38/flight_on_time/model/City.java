@@ -5,9 +5,9 @@ import jakarta.validation.constraints.*;
 import lombok.Data;
 
 @Entity
-@Table(name = "airports") //
+@Table(name = "cities") //
 @Data // Genera getters, setters, toString, etc. automáticamente
-public class Airport {
+public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //
