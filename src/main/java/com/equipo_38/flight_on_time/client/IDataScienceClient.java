@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(name = "ds-flight-prediction", url = "${ds.api.url}")
-public interface DataScienceClient {
+public interface IDataScienceClient {
 
     @PostMapping(value = "/predict",
             consumes = MediaType.APPLICATION_JSON_VALUE,
