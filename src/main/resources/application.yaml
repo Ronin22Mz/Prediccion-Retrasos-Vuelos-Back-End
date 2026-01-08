@@ -1,6 +1,6 @@
 spring:
   profiles:
-    #Profiles: dev, prod, test
+    #Profiles: dev, prod, compose, test
     active: dev
   application:
     name: flight-on-time
@@ -14,7 +14,7 @@ spring:
 #Client URL
 ds:
   api:
-    url: ${DATA_SCIENCE_API_PREDICTION:http://localhost:8585/api/predict}
+    url: ${DATA_SCIENCE_API_PREDICTION:http://192.168.1.2:8585/api/predict}
 
 #SpringDocs config
 springdoc:
