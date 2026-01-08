@@ -77,6 +77,45 @@ Antes de ejecutar el proyecto, asegúrate de contar con los siguientes requisito
 - **Navegador web**
     - Requerido para acceder a Swagger UI
 
+## 📂 Estructura del Proyecto
+
+```text
+├── .gitattributes
+├── .gitignore
+├── docker-compose.yaml
+├── Dockerfile
+├── pom.xml
+├── README.md
+│
+└── src
+    └── main
+       ├── java
+       │   └── com
+       │       └── equipo_38
+       │           └── flight_on_time
+       │               ├── client
+       │               ├── config
+       │               ├── controller
+       │               ├── docs
+       │               ├── dto
+       │               ├── exception
+       │               ├── mapper
+       │               ├── model
+       │               ├── repository
+       │               ├── service
+       │               │   └── impl
+       │               └── FlightOnTimeApplication.java
+       │
+       └── resources
+           ├── application.yaml
+           ├── application-dev.yaml
+           ├── application-prod.yaml
+           ├── application-test.yaml
+           ├── application-compose.yaml
+           ├── db
+           │   └── migration
+           └── messages
+```
 ## 📡 APIs principales
 
 A continuación se describen los endpoints principales expuestos por la API.
