@@ -3,6 +3,7 @@ package com.equipo_38.flight_on_time.controller;
 
 import com.equipo_38.flight_on_time.docs.IStandardApiResponses;
 import com.equipo_38.flight_on_time.docs.StatusCode;
+import com.equipo_38.flight_on_time.dto.BatchPredictionDTO;
 import com.equipo_38.flight_on_time.dto.FlightRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionResponseDTO;
 import com.equipo_38.flight_on_time.service.IFlightService;
@@ -13,12 +14,14 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Collections;
+import java.util.List;
 
 
 @RestController
@@ -61,6 +64,17 @@ public class FlightController implements IStandardApiResponses {
     public ResponseEntity<PredictionResponseDTO> predict(@Valid @RequestBody FlightRequestDTO request) {
         PredictionResponseDTO response = flightService.getPrediction(request);
         return ResponseEntity.ok(response);
+    }
+
+
+    @PostMapping(value = "/batch-csv",consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<BatchPredictionDTO> predictBatch(@RequestParam("file")MultipartFile file) {
+
+        if(file.isEmpty()){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BatchPredictionDTO(Collections.emptyList(),0,0,0));
+        }else{
+            return ResponseEntity.status(HttpStatus.OK).body(flightService.batchPrediction(file));
+        }
     }
 
 
