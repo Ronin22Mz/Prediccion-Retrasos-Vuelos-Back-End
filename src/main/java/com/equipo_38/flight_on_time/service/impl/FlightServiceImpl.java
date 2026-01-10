@@ -8,7 +8,7 @@ import com.equipo_38.flight_on_time.dto.PredictionResponseDTO;
 import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
 import com.equipo_38.flight_on_time.service.IAirlineService;
-import com.equipo_38.flight_on_time.service.ICityService;
+import com.equipo_38.flight_on_time.service.IAirportService;
 import com.equipo_38.flight_on_time.service.IFlightService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class FlightServiceImpl implements IFlightService {
     private final DataScienceGateway dataScienceGateway;
     private final FlightPredictionMapper flightPredictionMapper;
     private final IAirlineService airlineService;
-    private final ICityService cityService;
+    private final IAirportService cityService;
 
     @Override
     public PredictionResponseDTO getPrediction(FlightRequestDTO flightRequestDTO) {
