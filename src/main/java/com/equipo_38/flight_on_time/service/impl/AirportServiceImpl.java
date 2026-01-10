@@ -1,17 +1,16 @@
 package com.equipo_38.flight_on_time.service.impl;
 
 import com.equipo_38.flight_on_time.exception.CityNotFoundException;
-import com.equipo_38.flight_on_time.repository.ICityRepository;
-import com.equipo_38.flight_on_time.service.ICityService;
+import com.equipo_38.flight_on_time.repository.IAirportRepository;
+import com.equipo_38.flight_on_time.service.IAirportService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CityServiceImpl implements ICityService {
+public class AirportServiceImpl implements IAirportService {
 
-    private final ICityRepository airportRepository;
+    private final IAirportRepository airportRepository;
 
     @Override
     public void validateCityCode(String airportCode) {

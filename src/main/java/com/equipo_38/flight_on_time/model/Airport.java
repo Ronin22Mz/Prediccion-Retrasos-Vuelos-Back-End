@@ -3,11 +3,13 @@ package com.equipo_38.flight_on_time.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "cities") //
+@Table(name = "airports") //
 @Data // Genera getters, setters, toString, etc. automáticamente
-public class City {
+@NoArgsConstructor
+public class Airport {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //
