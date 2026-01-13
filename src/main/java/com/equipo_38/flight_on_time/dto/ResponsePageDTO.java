@@ -6,5 +6,4 @@ public record ResponsePageDTO<T>(
         List<T> content,
         int size
 ) {
-
 }
