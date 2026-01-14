@@ -11,6 +11,7 @@ import com.equipo_38.flight_on_time.repository.IAirlineOriginAirportRepository;
 import com.equipo_38.flight_on_time.repository.IAirportRepository;
 import com.equipo_38.flight_on_time.service.IAirportService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +33,11 @@ public class AirportServiceImpl implements IAirportService {
     }
 
     @Override
+    @Cacheable(
+            value = "airline-origins",
+            key = "#idAirline",
+            unless = "#result == null || #result.content.isEmpty()"
+    )
     public ResponsePageDTO<AirportResponseDTO> getAllOriginsForAirline(Long idAirline) {
         List<AirlineOriginAirport> result = airlineOriginAirportRepository.findAllByAirlineId(idAirline);
 
@@ -42,6 +48,11 @@ public class AirportServiceImpl implements IAirportService {
     }
 
     @Override
+    @Cacheable(
+            value = "airline-destinations",
+            key = "#idAirline",
+            unless = "#result == null || #result.content.isEmpty()"
+    )
     public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline) {
         List<AirlineDestinationAirport> result = airlineDestinationAirportRepository.findAllByAirlineId(idAirline);
         return new ResponsePageDTO<>(result.stream()
