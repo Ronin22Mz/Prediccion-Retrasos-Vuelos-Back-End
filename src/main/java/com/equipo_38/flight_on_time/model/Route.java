@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "routes")
 @Data
@@ -21,7 +19,7 @@ public class Route {
     private Airport origin;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "dest_airport_id", nullable = false)
+    @JoinColumn(name = "destination_airport_id", nullable = false)
     private Airport destination;
 
     @Column(name = "distance", nullable = false)

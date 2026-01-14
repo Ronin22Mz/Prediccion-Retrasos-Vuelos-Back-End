@@ -1,11 +1,11 @@
 package com.equipo_38.flight_on_time.controller;
 
 import com.equipo_38.flight_on_time.docs.IStandardApiResponses;
-import com.equipo_38.flight_on_time.dto.AirlineResponseDTO;
-import com.equipo_38.flight_on_time.dto.AirportResponseDTO;
-import com.equipo_38.flight_on_time.dto.ResponsePageDTO;
+import com.equipo_38.flight_on_time.docs.StatusCode;
+import com.equipo_38.flight_on_time.dto.*;
 import com.equipo_38.flight_on_time.service.IAirlineService;
 import com.equipo_38.flight_on_time.service.IAirportService;
+import com.equipo_38.flight_on_time.service.IRouteService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -28,18 +28,19 @@ public class FrontFlightController implements IStandardApiResponses {
 
     private final IAirlineService airlineService;
     private final IAirportService airportService;
+    private final IRouteService routeService;
 
     @GetMapping("/airlines")
     @Operation(
-            summary = "Devuelve todas las aerolineas disponibles en la base de datos",
+            summary = "Devuelve todas las aerolíneas disponibles en la base de datos",
             description = """
-                    "Este endpoint alimenta el Selector Principal del formulario:
+                    Este endpoint alimenta el Selector Principal del formulario:
                     Recupera el listado maestro de aerolíneas disponibles en el sistema para iniciar la búsqueda.
                     """,
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "Lista de aerolíneas recuperada exitosamente",
+                            responseCode = StatusCode.OK,
+                            description = StatusCode.OK_VALUE,
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = ResponsePageDTO.class)
@@ -53,15 +54,15 @@ public class FrontFlightController implements IStandardApiResponses {
 
     @GetMapping("/origins-by-airline/{idAirline}")
     @Operation(
-            summary = "Devuelve todos los origenes de una aerolinea en especifico",
+            summary = "Devuelve todos los orígenes de una aerolínea en especifico",
             description = """
-                    "Este endpoint alimenta el Selector Secundario del formulario:
-                    Recupera el listado de ciudades de origen disponibles en el sistema para cada aerolinea especificada por su ID.
+                    Este endpoint alimenta el Selector Secundario del formulario:
+                    Recupera el listado de ciudades de origen disponibles en el sistema para cada aerolínea especificada por su ID.
                     """,
             responses = {
                     @ApiResponse(
-                            responseCode = "200",
-                            description = "Lista de ciudades recuperada exitosamente",
+                            responseCode = StatusCode.OK,
+                            description = StatusCode.OK_VALUE,
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
                                     schema = @Schema(implementation = ResponsePageDTO.class)
@@ -71,6 +72,53 @@ public class FrontFlightController implements IStandardApiResponses {
     )
     public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllOriginsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline) {
         return ResponseEntity.ok(airportService.getAllOriginsForAirline(idAirline));
+    }
+
+    @GetMapping("/destinations-by-airline/{idAirline}")
+    @Operation(
+            summary = "Devuelve todos los destinos de una aerolínea en especifico",
+            description = """
+                    Este endpoint alimenta el Selector Terciario del formulario:
+                    Recupera el listado de ciudades de destino disponibles en el sistema para cada aerolínea especificada por su ID.
+                    """,
+            responses = {
+                    @ApiResponse(
+                            responseCode = StatusCode.OK,
+                            description = StatusCode.OK_VALUE,
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ResponsePageDTO.class)
+                            )
+                    )
+            }
+    )
+    public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllDestinationsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline) {
+        return ResponseEntity.ok(airportService.getAllDestinationsForAirline(idAirline));
+    }
+
+    @GetMapping("/distance/{idOrigin}/{idDestination}")
+    @Operation(
+            summary = "Devuelve la distancia en Kms entre el origen y destino",
+            description = """
+                    Este endpoint alimenta el Selector de distancia del formulario:
+                    Recupera la distancia entre la ciudad de origen y destino
+                    """,
+            responses = {
+                    @ApiResponse(
+                            responseCode = StatusCode.OK,
+                            description = StatusCode.OK_VALUE,
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = RouteResponseDTO.class)
+                            )
+                    )
+            }
+    )
+    public ResponseEntity<RouteResponseDTO> getDistanceFromOriginToDestination(
+            @PathVariable("idOrigin") @Min(1) Long idOrigin,
+            @PathVariable("idDestination") @Min(1) Long idDestination
+    ){
+        return ResponseEntity.ok(routeService.getDistanceFromOriginToDestination(idOrigin,idDestination));
     }
 
 }

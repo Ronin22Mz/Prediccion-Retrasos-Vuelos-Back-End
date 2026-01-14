@@ -28,7 +28,10 @@ public class AirlineServiceImpl implements IAirlineService {
     }
 
     @Override
-    @Cacheable(cacheNames = "airlinesCache", key = "'airlinesKey'", unless = "#result == null")
+    @Cacheable(
+            cacheNames = "airlines",
+            unless = "#result.content.isEmpty()"
+    )
     public ResponsePageDTO<AirlineResponseDTO> getAllAirlines() {
         List<Airline> airlines = airlineRepository.findAll();
         return new ResponsePageDTO<>(airlines.stream().map(airlineMapper::fromAirlineEntity).toList(), airlines.size());
