@@ -73,18 +73,18 @@ public class FlightController implements IStandardApiResponses {
             summary = "Predicción batch de retrasos a partir de archivo CSV",
             description = """
                 Permite realizar múltiples predicciones de retraso de vuelos en una sola operación.
-                
                 El endpoint recibe un archivo CSV con múltiples registros de vuelos y ejecuta
                 el proceso de inferencia de forma batch.
-                
-                Flujo del proceso:
+               
+                ### Flujo del proceso:
                     1. Validación estructural del archivo CSV.
                     2. Procesamiento batch de predicciones.
                     3. Persistencia y agregación de resultados.
-                
+               
                 El CSV debe contener una fila por vuelo con las columnas esperadas
                 por el modelo de Machine Learning.
-                Ejemplo *.csv:
+               
+                ### **Ejemplo (`.csv`):**
                     airline,origin,destiny,departureDate,distanceKm
                     AZ,GIG,GRU,2025-11-10T14:30:00,350
                     AZ,GRU,GIG,2025-11-11T09:15:00,350
