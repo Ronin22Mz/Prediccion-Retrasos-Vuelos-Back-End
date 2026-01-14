@@ -4,7 +4,9 @@ import com.equipo_38.flight_on_time.dto.AirportResponseDTO;
 import com.equipo_38.flight_on_time.dto.ResponsePageDTO;
 import com.equipo_38.flight_on_time.exception.CityNotFoundException;
 import com.equipo_38.flight_on_time.mapper.AirportMapper;
+import com.equipo_38.flight_on_time.model.AirlineDestinationAirport;
 import com.equipo_38.flight_on_time.model.AirlineOriginAirport;
+import com.equipo_38.flight_on_time.repository.IAirlineDestinationAirportRepository;
 import com.equipo_38.flight_on_time.repository.IAirlineOriginAirportRepository;
 import com.equipo_38.flight_on_time.repository.IAirportRepository;
 import com.equipo_38.flight_on_time.service.IAirportService;
@@ -19,6 +21,7 @@ public class AirportServiceImpl implements IAirportService {
 
     private final IAirportRepository airportRepository;
     private final IAirlineOriginAirportRepository airlineOriginAirportRepository;
+    private final IAirlineDestinationAirportRepository airlineDestinationAirportRepository;
     private final AirportMapper airportMapper;
 
     @Override
@@ -34,6 +37,15 @@ public class AirportServiceImpl implements IAirportService {
 
         return new ResponsePageDTO<>(result.stream()
                 .map(AirlineOriginAirport::getOrigin)
+                .map(airportMapper::fromAirportEntity)
+                .toList(), result.size());
+    }
+
+    @Override
+    public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline) {
+        List<AirlineDestinationAirport> result = airlineDestinationAirportRepository.findAllByAirlineId(idAirline);
+        return new ResponsePageDTO<>(result.stream()
+                .map(AirlineDestinationAirport::getDestination)
                 .map(airportMapper::fromAirportEntity)
                 .toList(), result.size());
     }

@@ -31,7 +31,7 @@ public class FrontFlightController implements IStandardApiResponses {
 
     @GetMapping("/airlines")
     @Operation(
-            summary = "Devuelve todas las aerolineas disponibles en la base de datos",
+            summary = "Devuelve todas las aerolíneas disponibles en la base de datos",
             description = """
                     "Este endpoint alimenta el Selector Principal del formulario:
                     Recupera el listado maestro de aerolíneas disponibles en el sistema para iniciar la búsqueda.
@@ -53,10 +53,10 @@ public class FrontFlightController implements IStandardApiResponses {
 
     @GetMapping("/origins-by-airline/{idAirline}")
     @Operation(
-            summary = "Devuelve todos los origenes de una aerolinea en especifico",
+            summary = "Devuelve todos los orígenes de una aerolínea en especifico",
             description = """
                     "Este endpoint alimenta el Selector Secundario del formulario:
-                    Recupera el listado de ciudades de origen disponibles en el sistema para cada aerolinea especificada por su ID.
+                    Recupera el listado de ciudades de origen disponibles en el sistema para cada aerolínea especificada por su ID.
                     """,
             responses = {
                     @ApiResponse(
@@ -71,6 +71,28 @@ public class FrontFlightController implements IStandardApiResponses {
     )
     public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllOriginsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline) {
         return ResponseEntity.ok(airportService.getAllOriginsForAirline(idAirline));
+    }
+
+    @GetMapping("/destinations-by-airline/{idAirline}")
+    @Operation(
+            summary = "Devuelve todos los destinos de una aerolínea en especifico",
+            description = """
+                    "Este endpoint alimenta el Selector Secundario del formulario:
+                    Recupera el listado de ciudades de destino disponibles en el sistema para cada aerolínea especificada por su ID.
+                    """,
+            responses = {
+                    @ApiResponse(
+                            responseCode = "200",
+                            description = "Lista de ciudades recuperada exitosamente",
+                            content = @Content(
+                                    mediaType = MediaType.APPLICATION_JSON_VALUE,
+                                    schema = @Schema(implementation = ResponsePageDTO.class)
+                            )
+                    )
+            }
+    )
+    public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllDestinationsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline) {
+        return ResponseEntity.ok(airportService.getAllDestinationsForAirline(idAirline));
     }
 
 }
