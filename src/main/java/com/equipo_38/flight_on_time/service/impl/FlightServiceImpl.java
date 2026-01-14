@@ -5,6 +5,7 @@ import com.equipo_38.flight_on_time.dto.BatchPredictionDTO;
 import com.equipo_38.flight_on_time.dto.FlightRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSResponseDTO;
 import com.equipo_38.flight_on_time.dto.PredictionResponseDTO;
+import com.equipo_38.flight_on_time.exception.BatchFileProcessingException;
 import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
 import com.equipo_38.flight_on_time.service.IAirlineService;
@@ -67,23 +68,16 @@ public class FlightServiceImpl implements IFlightService {
 
                 total++;
 
-                try {
-                    FlightRequestDTO request = getFlightRequestDTO(line);
-
-                    PredictionResponseDTO response = getPrediction(request);
-
-                    results.add(response);
+                if (processLine(line, results)) {
                     success++;
-
-                } catch (Exception e) {
-                    // Error por fila → no corta el batch
+                } else {
                     failed++;
                 }
             }
 
         } catch (IOException e) {
             // Error grave de archivo → batch inválido
-            throw new RuntimeException("Error reading CSV file", e);
+            throw new BatchFileProcessingException("Error reading CSV file");
         }
 
         return new BatchPredictionDTO(
@@ -94,6 +88,18 @@ public class FlightServiceImpl implements IFlightService {
         );
     }
 
+    private boolean processLine(String line, List<PredictionResponseDTO> results) {
+        try {
+            FlightRequestDTO request = getFlightRequestDTO(line);
+            PredictionResponseDTO response = getPrediction(request);
+            results.add(response);
+            return true;
+        } catch (Exception e) {
+            // Error por fila → no corta el batch
+            return false;
+        }
+    }
+
     private FlightRequestDTO getFlightRequestDTO(String line) {
         String[] columns = line.split(",");
 
@@ -101,7 +107,7 @@ public class FlightServiceImpl implements IFlightService {
                 columns[0].trim(),                       // airline
                 columns[1].trim(),                       // origin
                 columns[2].trim(),                       // destination
-                LocalDateTime.now(),      // flightDate
+                LocalDateTime.parse(columns[3].trim()),      // flightDate
                 Double.parseDouble(columns[4].trim())      // distanceKm
         );
         validationData(request);
