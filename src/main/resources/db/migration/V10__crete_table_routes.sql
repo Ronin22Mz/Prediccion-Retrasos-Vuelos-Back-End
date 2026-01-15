@@ -4,6 +4,7 @@ CREATE TABLE routes
     origin_airport_id      BIGINT           NOT NULL,
     destination_airport_id BIGINT           NOT NULL,
     distance               DOUBLE PRECISION NOT NULL,
+    estimated_flight_minutes INTEGER NOT NULL,
     CONSTRAINT fk_routes_origin_airport
         FOREIGN KEY (origin_airport_id)
             REFERENCES airports (id),
