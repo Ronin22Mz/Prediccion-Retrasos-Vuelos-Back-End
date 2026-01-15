@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  postgres-db:
+    image: postgres:18.1-bookworm
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: prediction-db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  prediction-app:
+    image: eduardomaravill/prediction-flight:latest
+    container_name: prediction-app
+    depends_on:
+      postgres-db:
+        condition: service_healthy
+    environment:
+      DB_URL_CONTAINER: jdbc:postgresql://postgres-db:5432/prediction-db?sslmode=prefer&connect_timeout=10
+      DB_USERNAME: postgres
+      DB_PASSWORD: postgres123
+    ports:
+      - "9090:8080"
+#Ejecutar: docker-compose up -d
+#Eliminar: docker-compose down

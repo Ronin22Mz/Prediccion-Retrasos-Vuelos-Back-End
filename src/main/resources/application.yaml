@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    #Profiles: dev, prod, compose, test
+    active: dev
+  application:
+    name: flight-on-time
+    ##Cache configuration
+  cache:
+    type: caffeine
+    caffeine:
+      # Usamos variables de entorno con valores por defecto (1000 items, 10 minutos)
+      spec: maximumSize=${CACHE_MAX_SIZE:1000},expireAfterWrite=${CACHE_TTL:10m}
+
+#Client URL
+ds:
+  api:
+    url: ${DATA_SCIENCE_API_PREDICTION:http://192.168.1.2:8585/api/predict}
+
+#SpringDocs config
+springdoc:
+  swagger-iu:
+    path: ${SWAGGER_IU_CONNECTION:/docs/swagger-ui.html}
+  api-docs:
+    path: ${SPRING_DOCS_CONNECTION:/docs/api-docs}
+
+#Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      dsClientPrediction:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 2s
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+
+#"${rate-limit.ip.request-per-minute}
+rate-limit:
+  ip:
+    request-per-minute: ${RATE_LIMITER_VALUE:60}

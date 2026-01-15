@@ -1,0 +1,18 @@
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Alaska Airlines Inc.', 'AS');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Allegiant Air', 'G4');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('American Airlines Inc.', 'AA');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Delta Air Lines Inc.', 'DL');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Endeavor Air Inc.', '9E');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Envoy Air', 'MQ');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('ExpressJet Airlines LLC d/b/a aha!', 'EV');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Frontier Airlines Inc.', 'F9');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Hawaiian Airlines Inc.', 'HA');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Horizon Air', 'QX');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('JetBlue Airways', 'B6');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Mesa Airlines Inc.', 'YV');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('PSA Airlines Inc.', 'OH');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Republic Airline', 'YX');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('SkyWest Airlines Inc.', 'OO');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Southwest Airlines Co.', 'WN');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('Spirit Air Lines', 'NK');
+INSERT INTO airlines (airline_name, airline_code) VALUES ('United Air Lines Inc.', 'UA');

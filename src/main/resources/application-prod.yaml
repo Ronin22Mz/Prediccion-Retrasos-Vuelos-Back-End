@@ -1,0 +1,107 @@
+# ==============================
+# Profile: prod
+# Configuración para ENTORNO DE PRODUCCIÓN
+# Base de datos PostgreSQL en Supabase
+# ==============================
+
+spring:
+  # ------------------------------
+  # Configuración JPA / Hibernate
+  # ------------------------------
+  jpa:
+    # ⚠️ IMPORTANTE:
+    # Se desactiva Open Session In View en producción
+    # Obliga a manejar correctamente las transacciones
+    open-in-view: false
+
+    # No mostrar SQL en consola (performance + seguridad)
+    show-sql: false
+
+    properties:
+      hibernate:
+        # No formatear SQL (menor overhead)
+        format_sql: false
+
+        # No incluir comentarios SQL
+        use_sql_comments: false
+
+        # Dialecto recomendado para PostgreSQL
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+        # Evita consultas innecesarias de metadata JDBC
+        temp:
+          use_jdbc_metadata_defaults: false
+
+  # ------------------------------
+  # Configuración del DataSource
+  # ------------------------------
+  datasource:
+    # URL de Supabase
+    # IMPORTANTE: Supabase requiere SSL
+    # sslmode=require es obligatorio
+    url: jdbc:postgresql://${SUPABASE_DATABASE_URL}
+
+    # Credenciales por variables de entorno
+    username: ${SUPABASE_DB_USERNAME}
+    password: ${SUPABASE_DB_PASSWORD}
+
+    # Driver JDBC
+    driver-class-name: org.postgresql.Driver
+
+    # ------------------------------
+    # Pool de conexiones HikariCP
+    # Ajustado para Supabase / Cloud
+    # ------------------------------
+    hikari:
+      # Nombre del pool
+      pool-name: PredictionConnectionPool-PROD
+
+      # Supabase limita conexiones según el plan
+      # Ajusta este valor según tu tier
+      maximum-pool-size: 10
+
+      # Conexiones mínimas inactivas
+      minimum-idle: 2
+
+      # Tiempo máximo de inactividad (ms)
+      idle-timeout: 600000
+
+      # Tiempo máximo de vida de una conexión (ms)
+      # Menor al timeout del proveedor
+      max-lifetime: 1800000
+
+      # Tiempo máximo de espera para obtener conexión (ms)
+      connection-timeout: 30000
+
+      # En producción se desactiva detección de fugas
+      leakDetectionThreshold: 0
+
+      # Test rápido de conexión
+      connection-test-query: SELECT 1
+
+# ------------------------------
+# Configuración de logs
+# ------------------------------
+logging:
+  level:
+    # Nivel general
+    root: INFO
+
+    # Spring Framework
+    org.springframework: INFO
+
+    # Hibernate
+    org.hibernate.SQL: WARN
+    org.hibernate.type: WARN
+
+# ------------------------------
+# SpringDoc / Swagger
+# ------------------------------
+springdoc:
+  swagger-ui:
+    # ❌ Deshabilitado en producción por seguridad
+    enabled: false
+
+  api-docs:
+    # ❌ No exponer OpenAPI públicamente
+    enabled: false
