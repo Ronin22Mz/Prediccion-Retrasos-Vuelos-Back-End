@@ -3,7 +3,8 @@ package com.equipo_38.flight_on_time.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record FlightRequestDTO(
@@ -25,7 +26,15 @@ public record FlightRequestDTO(
 
         @NotNull(message = "{flight.departureDate.notNull}")
         @FutureOrPresent(message = "{flight.departureDate.future}")
-        LocalDateTime departureDate,
+        LocalDate departureDate,
+
+
+        @NotNull(message = "{flight.departureHour.notNull}")
+        LocalTime departureHour,
+
+
+        @NotNull(message = "{flight.arrivedHour.notNull}")
+        LocalTime arrivedHour,
 
         @NotNull(message = "{flight.distance.notNull}")
         @Positive(message = "{flight.distanceKm.positive}")
@@ -40,6 +49,6 @@ public record FlightRequestDTO(
 
     @AssertTrue(message = "{flight.departureDate.max}")
     public boolean isValidDepartureDate() {
-        return departureDate.isBefore(LocalDateTime.now().plusYears(1));
+        return departureDate.isBefore(LocalDate.now().plusYears(1));
     }
 }
