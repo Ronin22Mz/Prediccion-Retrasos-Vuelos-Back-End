@@ -6,7 +6,10 @@ CREATE TABLE prediction_flights
     origin            VARCHAR(3)               NOT NULL,
     destination       VARCHAR(3)               NOT NULL,
     departure_date    TIMESTAMP                NOT NULL,
+    departure_hour    TIME NOT NULL,
+    arrived_hour      TIME NOT NULL,
     distance_km       DOUBLE PRECISION         NOT NULL,
+    elapsed_time      DOUBLE PRECISION NOT NULL,
     prediction_result VARCHAR(50)              NOT NULL,
     probability       DOUBLE PRECISION         NOT NULL
 );

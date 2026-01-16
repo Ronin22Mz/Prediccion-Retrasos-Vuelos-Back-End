@@ -8,7 +8,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Entity
@@ -42,12 +43,25 @@ public class PredictionFlight {
 
     @Column(name = "departure_date", nullable=false)
     @NotNull
-    private LocalDateTime departureDate;
+    private LocalDate departureDate;
 
+    @Column(name = "departure_hour", nullable = false)
+    @NotNull
+    private LocalTime departureHour;
+
+    @Column(name = "arrived_hour", nullable = false)
+    @NotNull
+    private LocalTime arrivedHour;
+
+    @Column(name = "distance_km", nullable = false)
     @DecimalMax("20000")
     @DecimalMin("2.0")
     @NotNull
     private Double distanceKm;
+
+    @Column(name = "elapsed_time", nullable = false)
+    @NotNull
+    private Double elapsedTime;
 
     //outputs
     @Enumerated(EnumType.STRING)
