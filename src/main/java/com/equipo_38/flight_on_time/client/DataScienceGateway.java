@@ -18,7 +18,7 @@ public class DataScienceGateway {
 
     @Cacheable(
             cacheNames = "dsPredictionCache",
-            key = "#flightRequestDTO.airline + '-' +#flightRequestDTO.origin + '-' + #flightRequestDTO.destination + '-' + #flightRequestDTO.flightDate",
+            key = "#flightRequestDTO.airline + '-' +#flightRequestDTO.origin + '-' + #flightRequestDTO.destination + '-' + #flightRequestDTO.departureDate + '-' + #flightRequestDTO.departureHour  + '-' + #flightRequestDTO.arrivedHour  + '-' + #flightRequestDTO.distanceKm" ,
             unless = "#result == null"
     )
     @CircuitBreaker(name = "dsClientPrediction", fallbackMethod = "clientPredictionFallback")

@@ -1,5 +1,6 @@
 package com.equipo_38.flight_on_time.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.*;
 
@@ -43,11 +44,13 @@ public record FlightRequestDTO(
         Double distanceKm
 ) {
     @AssertTrue(message = "{flight.route.invalid}")
+    @JsonIgnore
     public boolean isValidRoute() {
         return origin != null && destination != null && !origin.equals(destination);
     }
 
     @AssertTrue(message = "{flight.departureDate.max}")
+    @JsonIgnore
     public boolean isValidDepartureDate() {
         return departureDate.isBefore(LocalDate.now().plusYears(1));
     }
