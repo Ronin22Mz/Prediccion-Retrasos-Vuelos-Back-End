@@ -15,11 +15,6 @@ spring:
     # Mostrar SQL ayuda a depurar fallos en tests
     show-sql: true
 
-    hibernate:
-      # Hibernate gestiona el esquema automáticamente
-      # create-drop asegura un DB limpio por ejecución
-      ddl-auto: create-drop
-
     properties:
       hibernate:
         # Dialecto H2

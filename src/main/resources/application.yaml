@@ -1,7 +1,7 @@
 spring:
   profiles:
     #Profiles: dev, prod, compose, test
-    active: dev
+    active: prod
   application:
     name: flight-on-time
     ##Cache configuration
@@ -14,7 +14,7 @@ spring:
 #Client URL
 ds:
   api:
-    url: ${DATA_SCIENCE_API_PREDICTION:http://192.168.1.2:8585/api/predict}
+    url: ${DATA_SCIENCE_API_PREDICTION:http://localhost:8000}
 
 #SpringDocs config
 springdoc:
@@ -29,6 +29,7 @@ resilience4j:
     instances:
       dsClientPrediction:
         slidingWindowSize: 10
+
         minimumNumberOfCalls: 2
         failureRateThreshold: 50
         waitDurationInOpenState: 2s
