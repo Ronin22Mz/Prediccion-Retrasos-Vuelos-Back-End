@@ -20,7 +20,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -107,8 +108,10 @@ public class FlightServiceImpl implements IFlightService {
                 columns[0].trim(),                       // airline
                 columns[1].trim(),                       // origin
                 columns[2].trim(),                       // destination
-                LocalDateTime.parse(columns[3].trim()),      // flightDate
-                Double.parseDouble(columns[4].trim())      // distanceKm
+                LocalDate.parse(columns[3].trim()),     // flightDate
+                LocalTime.parse(columns[4].trim()),      //DepartureHour
+                LocalTime.parse(columns[5].trim()),      //ArrivedHour
+                Double.parseDouble(columns[6].trim())    // distanceKm
         );
         validationData(request);
         return request;

@@ -7,6 +7,8 @@ import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
 import org.springframework.stereotype.Component;
 
+import java.time.Duration;
+
 @Component
 public class FlightPredictionMapper {
 
@@ -28,7 +30,21 @@ public class FlightPredictionMapper {
         entity.setOrigin(request.origin());
         entity.setDestination(request.destination());
         entity.setDepartureDate(request.departureDate());
+        entity.setDepartureHour(request.departureHour());
+        entity.setArrivedHour(request.arrivedHour());
         entity.setDistanceKm(request.distanceKm());
+        // ✅ elapsed time en minutos
+        double elapsedMinutes = Duration.between(
+                request.departureHour(),
+                request.arrivedHour()
+        ).toMinutes();
+
+        if (elapsedMinutes < 0) {
+            elapsedMinutes += 24 * 60;
+        }
+
+        entity.setElapsedTime(elapsedMinutes);
+
         entity.setPredictionResult(response.forecast());
         entity.setProbability(response.probability());
         return entity;

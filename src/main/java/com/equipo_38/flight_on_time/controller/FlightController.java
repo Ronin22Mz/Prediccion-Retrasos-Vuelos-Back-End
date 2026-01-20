@@ -85,12 +85,12 @@ public class FlightController implements IStandardApiResponses {
                 por el modelo de Machine Learning.
                
                 ### **Ejemplo (`.csv`):**
-                    airline,origin,destiny,departureDate,distanceKm
-                    AZ,GIG,GRU,2025-11-10T14:30:00,350
-                    AZ,GRU,GIG,2025-11-11T09:15:00,350
-                    LA,SCL,LIM,2025-11-12T06:45:00,2450
-                    AV,BOG,MEX,2025-11-13T13:20:00,3150
-                    IB,MAD,BCN,2025-11-14T08:00:00,505
+                    airline,origin,destination,departureDate,departureHour,arrivedHour,distanceKm
+                    AZ,GIG,GRU,2025-11-10,14:30,15:40,350
+                    AZ,GRU,GIG,2025-11-11,09:15,10:25,350
+                    LA,SCL,LIM,2025-11-12,06:45,10:15,2450
+                    AV,BOG,MEX,2025-11-13,13:20,18:50,3150
+                    IB,MAD,BCN,2025-11-14,08:00,09:20,505
                 """
             ,
             responses = {

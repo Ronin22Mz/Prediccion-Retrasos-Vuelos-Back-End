@@ -1,9 +1,12 @@
 package com.equipo_38.flight_on_time.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "airports") //
@@ -25,4 +28,20 @@ public class Airport {
     @NotBlank(message = "El nombre de la ciudad es obligatorio")
     @Size(max = 150, message = "El nombre de la ciudad no puede superar los 150 caracteres")
     private String cityName;
+
+    @OneToMany(mappedBy = "destination")
+    @JsonIgnore
+    private List<AirlineDestinationAirport> airlineDestinationAirports;
+
+    @OneToMany(mappedBy = "origin")
+    @JsonIgnore
+    private List<AirlineOriginAirport> airlineOriginAirports;
+
+    @OneToMany(mappedBy = "origin")
+    @JsonIgnore
+    private List<Route> originRoutes;
+
+    @OneToMany(mappedBy = "destination")
+    @JsonIgnore
+    private List<Route> destinationRoutes;
 }
