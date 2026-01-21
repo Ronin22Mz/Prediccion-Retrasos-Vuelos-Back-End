@@ -1,381 +1,382 @@
-INSERT INTO airports (city_code, city_name) VALUES ('ABE', 'Allentown/Bethlehem/Easton, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('ABI', 'Abilene, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('ABQ', 'Albuquerque, NM');
-INSERT INTO airports (city_code, city_name) VALUES ('ABR', 'Aberdeen, SD');
-INSERT INTO airports (city_code, city_name) VALUES ('ABY', 'Albany, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('ACK', 'Nantucket, MA');
-INSERT INTO airports (city_code, city_name) VALUES ('ACT', 'Waco, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('ACV', 'Arcata/Eureka, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('ACY', 'Atlantic City, NJ');
-INSERT INTO airports (city_code, city_name) VALUES ('ADK', 'Adak Island, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('ADQ', 'Kodiak, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('AEX', 'Alexandria, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('AGS', 'Augusta, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('AKN', 'King Salmon, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('ALB', 'Albany, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ALO', 'Waterloo, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('ALS', 'Alamosa, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('ALW', 'Walla Walla, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('AMA', 'Amarillo, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('ANC', 'Anchorage, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('APN', 'Alpena, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('ART', 'Watertown, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ASE', 'Aspen, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('ATL', 'Atlanta, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('ATW', 'Appleton, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('ATY', 'Watertown, SD');
-INSERT INTO airports (city_code, city_name) VALUES ('AUS', 'Austin, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('AVL', 'Asheville, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('AVP', 'Scranton/Wilkes-Barre, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('AZA', 'Phoenix, AZ');
-INSERT INTO airports (city_code, city_name) VALUES ('AZO', 'Kalamazoo, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('BDL', 'Hartford, CT');
-INSERT INTO airports (city_code, city_name) VALUES ('BET', 'Bethel, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('BFF', 'Scottsbluff, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('BFL', 'Bakersfield, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('BFM', 'Mobile, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('BGM', 'Binghamton, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('BGR', 'Bangor, ME');
-INSERT INTO airports (city_code, city_name) VALUES ('BHM', 'Birmingham, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('BIH', 'Bishop, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('BIL', 'Billings, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('BIS', 'Bismarck/Mandan, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('BJI', 'Bemidji, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('BKG', 'Branson, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('BLI', 'Bellingham, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('BLV', 'Belleville, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('BMI', 'Bloomington/Normal, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('BNA', 'Nashville, TN');
-INSERT INTO airports (city_code, city_name) VALUES ('BOI', 'Boise, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('BOS', 'Boston, MA');
-INSERT INTO airports (city_code, city_name) VALUES ('BPT', 'Beaumont/Port Arthur, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('BQK', 'Brunswick, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('BQN', 'Aguadilla, PR');
-INSERT INTO airports (city_code, city_name) VALUES ('BRD', 'Brainerd, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('BRO', 'Brownsville, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('BRW', 'Barrow, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('BTM', 'Butte, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('BTR', 'Baton Rouge, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('BTV', 'Burlington, VT');
-INSERT INTO airports (city_code, city_name) VALUES ('BUF', 'Buffalo, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('BUR', 'Burbank, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('BWI', 'Baltimore, MD');
-INSERT INTO airports (city_code, city_name) VALUES ('BZN', 'Bozeman, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('CAE', 'Columbia, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('CAK', 'Akron, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('CDB', 'Cold Bay, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('CDC', 'Cedar City, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('CDV', 'Cordova, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('CGI', 'Cape Girardeau, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('CHA', 'Chattanooga, TN');
-INSERT INTO airports (city_code, city_name) VALUES ('CHO', 'Charlottesville, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('CHS', 'Charleston, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('CID', 'Cedar Rapids/Iowa City, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('CIU', 'Sault Ste. Marie, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('CKB', 'Clarksburg/Fairmont, WV');
-INSERT INTO airports (city_code, city_name) VALUES ('CLE', 'Cleveland, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('CLL', 'College Station/Bryan, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('CLT', 'Charlotte, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('CMH', 'Columbus, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('CMI', 'Champaign/Urbana, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('CMX', 'Hancock/Houghton, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('CNY', 'Moab, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('COD', 'Cody, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('COS', 'Colorado Springs, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('COU', 'Columbia, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('CPR', 'Casper, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('CRP', 'Corpus Christi, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('CRW', 'Charleston/Dunbar, WV');
-INSERT INTO airports (city_code, city_name) VALUES ('CSG', 'Columbus, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('CVG', 'Cincinnati, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('CWA', 'Mosinee, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('CYS', 'Cheyenne, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('DAB', 'Daytona Beach, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('DAL', 'Dallas, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('DAY', 'Dayton, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('DBQ', 'Dubuque, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('DCA', 'Washington, DC');
-INSERT INTO airports (city_code, city_name) VALUES ('DDC', 'Dodge City, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('DEC', 'Decatur, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('DEN', 'Denver, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('DFW', 'Dallas/Fort Worth, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('DHN', 'Dothan, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('DIK', 'Dickinson, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('DLG', 'Dillingham, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('DLH', 'Duluth, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('DRO', 'Durango, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('DRT', 'Del Rio, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('DSM', 'Des Moines, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('DTW', 'Detroit, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('DVL', 'Devils Lake, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('EAR', 'Kearney, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('EAT', 'Wenatchee, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('EAU', 'Eau Claire, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('ECP', 'Panama City, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('EGE', 'Eagle, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('EKO', 'Elko, NV');
-INSERT INTO airports (city_code, city_name) VALUES ('ELM', 'Elmira/Corning, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ELP', 'El Paso, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('ERI', 'Erie, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('ESC', 'Escanaba, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('EUG', 'Eugene, OR');
-INSERT INTO airports (city_code, city_name) VALUES ('EVV', 'Evansville, IN');
-INSERT INTO airports (city_code, city_name) VALUES ('EWN', 'New Bern/Morehead/Beaufort, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('EWR', 'Newark, NJ');
-INSERT INTO airports (city_code, city_name) VALUES ('EYW', 'Key West, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('FAI', 'Fairbanks, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('FAR', 'Fargo, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('FAT', 'Fresno, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('FAY', 'Fayetteville, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('FCA', 'Kalispell, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('FLG', 'Flagstaff, AZ');
-INSERT INTO airports (city_code, city_name) VALUES ('FLL', 'Fort Lauderdale, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('FLO', 'Florence, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('FNT', 'Flint, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('FOD', 'Fort Dodge, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('FSD', 'Sioux Falls, SD');
-INSERT INTO airports (city_code, city_name) VALUES ('FSM', 'Fort Smith, AR');
-INSERT INTO airports (city_code, city_name) VALUES ('FWA', 'Fort Wayne, IN');
-INSERT INTO airports (city_code, city_name) VALUES ('GCC', 'Gillette, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('GCK', 'Garden City, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('GEG', 'Spokane, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('GFK', 'Grand Forks, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('GGG', 'Longview, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('GJT', 'Grand Junction, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('GNV', 'Gainesville, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('GPT', 'Gulfport/Biloxi, MS');
-INSERT INTO airports (city_code, city_name) VALUES ('GRB', 'Green Bay, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('GRI', 'Grand Island, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('GRK', 'Killeen, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('GRR', 'Grand Rapids, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('GSO', 'Greensboro/High Point, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('GSP', 'Greer, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('GST', 'Gustavus, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('GTF', 'Great Falls, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('GTR', 'Columbus, MS');
-INSERT INTO airports (city_code, city_name) VALUES ('GUC', 'Gunnison, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('GUM', 'Guam, TT');
-INSERT INTO airports (city_code, city_name) VALUES ('HDN', 'Hayden, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('HGR', 'Hagerstown, MD');
-INSERT INTO airports (city_code, city_name) VALUES ('HHH', 'Hilton Head, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('HIB', 'Hibbing, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('HLN', 'Helena, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('HNL', 'Honolulu, HI');
-INSERT INTO airports (city_code, city_name) VALUES ('HOB', 'Hobbs, NM');
-INSERT INTO airports (city_code, city_name) VALUES ('HOU', 'Houston, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('HPN', 'White Plains, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('HRL', 'Harlingen/San Benito, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('HSV', 'Huntsville, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('HTS', 'Ashland, WV');
-INSERT INTO airports (city_code, city_name) VALUES ('HVN', 'New Haven, CT');
-INSERT INTO airports (city_code, city_name) VALUES ('HYA', 'Hyannis, MA');
-INSERT INTO airports (city_code, city_name) VALUES ('HYS', 'Hays, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('IAD', 'Washington, DC');
-INSERT INTO airports (city_code, city_name) VALUES ('IAG', 'Niagara Falls, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('IAH', 'Houston, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('ICT', 'Wichita, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('IDA', 'Idaho Falls, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('ILG', 'Wilmington, DE');
-INSERT INTO airports (city_code, city_name) VALUES ('ILM', 'Wilmington, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('IMT', 'Iron Mountain/Kingsfd, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('IND', 'Indianapolis, IN');
-INSERT INTO airports (city_code, city_name) VALUES ('INL', 'International Falls, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('IPT', 'Williamsport, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('ISN', 'Williston, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('ISP', 'Islip, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ITH', 'Ithaca/Cortland, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ITO', 'Hilo, HI');
-INSERT INTO airports (city_code, city_name) VALUES ('JAC', 'Jackson, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('JAN', 'Jackson/Vicksburg, MS');
-INSERT INTO airports (city_code, city_name) VALUES ('JAX', 'Jacksonville, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('JFK', 'New York, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('JLN', 'Joplin, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('JMS', 'Jamestown, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('JNU', 'Juneau, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('JST', 'Johnstown, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('KOA', 'Kona, HI');
-INSERT INTO airports (city_code, city_name) VALUES ('KTN', 'Ketchikan, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('LAN', 'Lansing, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('LAR', 'Laramie, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('LAS', 'Las Vegas, NV');
-INSERT INTO airports (city_code, city_name) VALUES ('LAW', 'Lawton/Fort Sill, OK');
-INSERT INTO airports (city_code, city_name) VALUES ('LAX', 'Los Angeles, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('LBB', 'Lubbock, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('LBE', 'Latrobe, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('LBF', 'North Platte, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('LBL', 'Liberal, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('LCH', 'Lake Charles, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('LCK', 'Columbus, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('LEX', 'Lexington, KY');
-INSERT INTO airports (city_code, city_name) VALUES ('LFT', 'Lafayette, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('LGA', 'New York, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('LGB', 'Long Beach, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('LIH', 'Lihue, HI');
-INSERT INTO airports (city_code, city_name) VALUES ('LIT', 'Little Rock, AR');
-INSERT INTO airports (city_code, city_name) VALUES ('LNK', 'Lincoln, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('LRD', 'Laredo, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('LSE', 'La Crosse, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('LWB', 'Lewisburg, WV');
-INSERT INTO airports (city_code, city_name) VALUES ('LWS', 'Lewiston, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('LYH', 'Lynchburg, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('MAF', 'Midland/Odessa, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('MBS', 'Saginaw/Bay City/Midland, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('MCI', 'Kansas City, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('MCO', 'Orlando, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('MCW', 'Mason City, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('MDT', 'Harrisburg, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('MDW', 'Chicago, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('MEI', 'Meridian, MS');
-INSERT INTO airports (city_code, city_name) VALUES ('MEM', 'Memphis, TN');
-INSERT INTO airports (city_code, city_name) VALUES ('MFE', 'Mission/McAllen/Edinburg, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('MFR', 'Medford, OR');
-INSERT INTO airports (city_code, city_name) VALUES ('MGM', 'Montgomery, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('MHK', 'Manhattan/Ft. Riley, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('MHT', 'Manchester, NH');
-INSERT INTO airports (city_code, city_name) VALUES ('MIA', 'Miami, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('MKE', 'Milwaukee, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('MKG', 'Muskegon, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('MLB', 'Melbourne, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('MLI', 'Moline, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('MLU', 'Monroe, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('MMH', 'Mammoth Lakes, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('MOB', 'Mobile, AL');
-INSERT INTO airports (city_code, city_name) VALUES ('MOT', 'Minot, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('MQT', 'Marquette, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('MRY', 'Monterey, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('MSN', 'Madison, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('MSO', 'Missoula, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('MSP', 'Minneapolis, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('MSY', 'New Orleans, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('MTJ', 'Montrose/Delta, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('MVY', 'Martha''s Vineyard, MA');
-INSERT INTO airports (city_code, city_name) VALUES ('MYR', 'Myrtle Beach, SC');
-INSERT INTO airports (city_code, city_name) VALUES ('OAJ', 'Jacksonville/Camp Lejeune, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('OAK', 'Oakland, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('OGD', 'Ogden, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('OGG', 'Kahului, HI');
-INSERT INTO airports (city_code, city_name) VALUES ('OGS', 'Ogdensburg, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('OKC', 'Oklahoma City, OK');
-INSERT INTO airports (city_code, city_name) VALUES ('OMA', 'Omaha, NE');
-INSERT INTO airports (city_code, city_name) VALUES ('OME', 'Nome, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('ONT', 'Ontario, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('ORD', 'Chicago, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('ORF', 'Norfolk, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('ORH', 'Worcester, MA');
-INSERT INTO airports (city_code, city_name) VALUES ('OTH', 'North Bend/Coos Bay, OR');
-INSERT INTO airports (city_code, city_name) VALUES ('OTZ', 'Kotzebue, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('OWB', 'Owensboro, KY');
-INSERT INTO airports (city_code, city_name) VALUES ('PAE', 'Everett, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('PAH', 'Paducah, KY');
-INSERT INTO airports (city_code, city_name) VALUES ('PBG', 'Plattsburgh, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('PBI', 'West Palm Beach/Palm Beach, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('PDX', 'Portland, OR');
-INSERT INTO airports (city_code, city_name) VALUES ('PGD', 'Punta Gorda, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('PGV', 'Greenville, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('PHF', 'Newport News/Williamsburg, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('PHL', 'Philadelphia, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('PHX', 'Phoenix, AZ');
-INSERT INTO airports (city_code, city_name) VALUES ('PIA', 'Peoria, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('PIB', 'Hattiesburg/Laurel, MS');
-INSERT INTO airports (city_code, city_name) VALUES ('PIE', 'St. Petersburg, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('PIH', 'Pocatello, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('PIR', 'Pierre, SD');
-INSERT INTO airports (city_code, city_name) VALUES ('PIT', 'Pittsburgh, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('PLN', 'Pellston, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('PNS', 'Pensacola, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('PPG', 'Pago Pago, TT');
-INSERT INTO airports (city_code, city_name) VALUES ('PRC', 'Prescott, AZ');
-INSERT INTO airports (city_code, city_name) VALUES ('PSC', 'Pasco/Kennewick/Richland, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('PSE', 'Ponce, PR');
-INSERT INTO airports (city_code, city_name) VALUES ('PSG', 'Petersburg, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('PSM', 'Portsmouth, NH');
-INSERT INTO airports (city_code, city_name) VALUES ('PSP', 'Palm Springs, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('PUB', 'Pueblo, CO');
-INSERT INTO airports (city_code, city_name) VALUES ('PUW', 'Pullman, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('PVD', 'Providence, RI');
-INSERT INTO airports (city_code, city_name) VALUES ('PVU', 'Provo, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('PWM', 'Portland, ME');
-INSERT INTO airports (city_code, city_name) VALUES ('RAP', 'Rapid City, SD');
-INSERT INTO airports (city_code, city_name) VALUES ('RDD', 'Redding, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('RDM', 'Bend/Redmond, OR');
-INSERT INTO airports (city_code, city_name) VALUES ('RDU', 'Raleigh/Durham, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('RFD', 'Rockford, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('RHI', 'Rhinelander, WI');
-INSERT INTO airports (city_code, city_name) VALUES ('RIC', 'Richmond, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('RIW', 'Riverton/Lander, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('RKS', 'Rock Springs, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('RNO', 'Reno, NV');
-INSERT INTO airports (city_code, city_name) VALUES ('ROA', 'Roanoke, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('ROC', 'Rochester, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('ROW', 'Roswell, NM');
-INSERT INTO airports (city_code, city_name) VALUES ('RST', 'Rochester, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('RSW', 'Fort Myers, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('SAF', 'Santa Fe, NM');
-INSERT INTO airports (city_code, city_name) VALUES ('SAN', 'San Diego, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SAT', 'San Antonio, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('SAV', 'Savannah, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('SBA', 'Santa Barbara, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SBN', 'South Bend, IN');
-INSERT INTO airports (city_code, city_name) VALUES ('SBP', 'San Luis Obispo, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SCC', 'Deadhorse, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('SCE', 'State College, PA');
-INSERT INTO airports (city_code, city_name) VALUES ('SCK', 'Stockton, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SDF', 'Louisville, KY');
-INSERT INTO airports (city_code, city_name) VALUES ('SEA', 'Seattle, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('SFB', 'Sanford, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('SFO', 'San Francisco, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SGF', 'Springfield, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('SGU', 'St. George, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('SHD', 'Staunton, VA');
-INSERT INTO airports (city_code, city_name) VALUES ('SHR', 'Sheridan, WY');
-INSERT INTO airports (city_code, city_name) VALUES ('SHV', 'Shreveport, LA');
-INSERT INTO airports (city_code, city_name) VALUES ('SIT', 'Sitka, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('SJC', 'San Jose, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SJT', 'San Angelo, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('SJU', 'San Juan, PR');
-INSERT INTO airports (city_code, city_name) VALUES ('SLC', 'Salt Lake City, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('SLN', 'Salina, KS');
-INSERT INTO airports (city_code, city_name) VALUES ('SMF', 'Sacramento, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SMX', 'Santa Maria, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SNA', 'Santa Ana, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('SPI', 'Springfield, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('SPN', 'Saipan, TT');
-INSERT INTO airports (city_code, city_name) VALUES ('SPS', 'Wichita Falls, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('SRQ', 'Sarasota/Bradenton, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('STC', 'St. Cloud, MN');
-INSERT INTO airports (city_code, city_name) VALUES ('STL', 'St. Louis, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('STS', 'Santa Rosa, CA');
-INSERT INTO airports (city_code, city_name) VALUES ('STT', 'Charlotte Amalie, VI');
-INSERT INTO airports (city_code, city_name) VALUES ('STX', 'Christiansted, VI');
-INSERT INTO airports (city_code, city_name) VALUES ('SUN', 'Sun Valley/Hailey/Ketchum, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('SUX', 'Sioux City, IA');
-INSERT INTO airports (city_code, city_name) VALUES ('SWF', 'Newburgh/Poughkeepsie, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('SWO', 'Stillwater, OK');
-INSERT INTO airports (city_code, city_name) VALUES ('SYR', 'Syracuse, NY');
-INSERT INTO airports (city_code, city_name) VALUES ('TBN', 'Fort Leonard Wood, MO');
-INSERT INTO airports (city_code, city_name) VALUES ('TLH', 'Tallahassee, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('TOL', 'Toledo, OH');
-INSERT INTO airports (city_code, city_name) VALUES ('TPA', 'Tampa, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('TRI', 'Bristol/Johnson City/Kingsport, TN');
-INSERT INTO airports (city_code, city_name) VALUES ('TTN', 'Trenton, NJ');
-INSERT INTO airports (city_code, city_name) VALUES ('TUL', 'Tulsa, OK');
-INSERT INTO airports (city_code, city_name) VALUES ('TUS', 'Tucson, AZ');
-INSERT INTO airports (city_code, city_name) VALUES ('TVC', 'Traverse City, MI');
-INSERT INTO airports (city_code, city_name) VALUES ('TWF', 'Twin Falls, ID');
-INSERT INTO airports (city_code, city_name) VALUES ('TXK', 'Texarkana, AR');
-INSERT INTO airports (city_code, city_name) VALUES ('TYR', 'Tyler, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('TYS', 'Knoxville, TN');
-INSERT INTO airports (city_code, city_name) VALUES ('UIN', 'Quincy, IL');
-INSERT INTO airports (city_code, city_name) VALUES ('USA', 'Concord, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('USA', 'CONCORD, NC');
-INSERT INTO airports (city_code, city_name) VALUES ('VCT', 'Victoria, TX');
-INSERT INTO airports (city_code, city_name) VALUES ('VEL', 'Vernal, UT');
-INSERT INTO airports (city_code, city_name) VALUES ('VLD', 'Valdosta, GA');
-INSERT INTO airports (city_code, city_name) VALUES ('VPS', 'Valparaiso, FL');
-INSERT INTO airports (city_code, city_name) VALUES ('WRG', 'Wrangell, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('WYS', 'West Yellowstone, MT');
-INSERT INTO airports (city_code, city_name) VALUES ('XNA', 'Fayetteville, AR');
-INSERT INTO airports (city_code, city_name) VALUES ('XWA', 'Williston, ND');
-INSERT INTO airports (city_code, city_name) VALUES ('YAK', 'Yakutat, AK');
-INSERT INTO airports (city_code, city_name) VALUES ('YKM', 'Yakima, WA');
-INSERT INTO airports (city_code, city_name) VALUES ('YUM', 'Yuma, AZ');
+INSERT INTO airports (city_code, city_name)
+VALUES ('ABE', 'Allentown/Bethlehem/Easton, PA'),
+       ('ABI', 'Abilene, TX'),
+       ('ABQ', 'Albuquerque, NM'),
+       ('ABR', 'Aberdeen, SD'),
+       ('ABY', 'Albany, GA'),
+       ('ACK', 'Nantucket, MA'),
+       ('ACT', 'Waco, TX'),
+       ('ACV', 'Arcata/Eureka, CA'),
+       ('ACY', 'Atlantic City, NJ'),
+       ('ADK', 'Adak Island, AK'),
+       ('ADQ', 'Kodiak, AK'),
+       ('AEX', 'Alexandria, LA'),
+       ('AGS', 'Augusta, GA'),
+       ('AKN', 'King Salmon, AK'),
+       ('ALB', 'Albany, NY'),
+       ('ALO', 'Waterloo, IA'),
+       ('ALS', 'Alamosa, CO'),
+       ('ALW', 'Walla Walla, WA'),
+       ('AMA', 'Amarillo, TX'),
+       ('ANC', 'Anchorage, AK'),
+       ('APN', 'Alpena, MI'),
+       ('ART', 'Watertown, NY'),
+       ('ASE', 'Aspen, CO'),
+       ('ATL', 'Atlanta, GA'),
+       ('ATW', 'Appleton, WI'),
+       ('ATY', 'Watertown, SD'),
+       ('AUS', 'Austin, TX'),
+       ('AVL', 'Asheville, NC'),
+       ('AVP', 'Scranton/Wilkes-Barre, PA'),
+       ('AZA', 'Phoenix, AZ'),
+       ('AZO', 'Kalamazoo, MI'),
+       ('BDL', 'Hartford, CT'),
+       ('BET', 'Bethel, AK'),
+       ('BFF', 'Scottsbluff, NE'),
+       ('BFL', 'Bakersfield, CA'),
+       ('BFM', 'Mobile, AL'),
+       ('BGM', 'Binghamton, NY'),
+       ('BGR', 'Bangor, ME'),
+       ('BHM', 'Birmingham, AL'),
+       ('BIH', 'Bishop, CA'),
+       ('BIL', 'Billings, MT'),
+       ('BIS', 'Bismarck/Mandan, ND'),
+       ('BJI', 'Bemidji, MN'),
+       ('BKG', 'Branson, MO'),
+       ('BLI', 'Bellingham, WA'),
+       ('BLV', 'Belleville, IL'),
+       ('BMI', 'Bloomington/Normal, IL'),
+       ('BNA', 'Nashville, TN'),
+       ('BOI', 'Boise, ID'),
+       ('BOS', 'Boston, MA'),
+       ('BPT', 'Beaumont/Port Arthur, TX'),
+       ('BQK', 'Brunswick, GA'),
+       ('BQN', 'Aguadilla, PR'),
+       ('BRD', 'Brainerd, MN'),
+       ('BRO', 'Brownsville, TX'),
+       ('BRW', 'Barrow, AK'),
+       ('BTM', 'Butte, MT'),
+       ('BTR', 'Baton Rouge, LA'),
+       ('BTV', 'Burlington, VT'),
+       ('BUF', 'Buffalo, NY'),
+       ('BUR', 'Burbank, CA'),
+       ('BWI', 'Baltimore, MD'),
+       ('BZN', 'Bozeman, MT'),
+       ('CAE', 'Columbia, SC'),
+       ('CAK', 'Akron, OH'),
+       ('CDB', 'Cold Bay, AK'),
+       ('CDC', 'Cedar City, UT'),
+       ('CDV', 'Cordova, AK'),
+       ('CGI', 'Cape Girardeau, MO'),
+       ('CHA', 'Chattanooga, TN'),
+       ('CHO', 'Charlottesville, VA'),
+       ('CHS', 'Charleston, SC'),
+       ('CID', 'Cedar Rapids/Iowa City, IA'),
+       ('CIU', 'Sault Ste. Marie, MI'),
+       ('CKB', 'Clarksburg/Fairmont, WV'),
+       ('CLE', 'Cleveland, OH'),
+       ('CLL', 'College Station/Bryan, TX'),
+       ('CLT', 'Charlotte, NC'),
+       ('CMH', 'Columbus, OH'),
+       ('CMI', 'Champaign/Urbana, IL'),
+       ('CMX', 'Hancock/Houghton, MI'),
+       ('CNY', 'Moab, UT'),
+       ('COD', 'Cody, WY'),
+       ('COS', 'Colorado Springs, CO'),
+       ('COU', 'Columbia, MO'),
+       ('CPR', 'Casper, WY'),
+       ('CRP', 'Corpus Christi, TX'),
+       ('CRW', 'Charleston/Dunbar, WV'),
+       ('CSG', 'Columbus, GA'),
+       ('CVG', 'Cincinnati, OH'),
+       ('CWA', 'Mosinee, WI'),
+       ('CYS', 'Cheyenne, WY'),
+       ('DAB', 'Daytona Beach, FL'),
+       ('DAL', 'Dallas, TX'),
+       ('DAY', 'Dayton, OH'),
+       ('DBQ', 'Dubuque, IA'),
+       ('DCA', 'Washington, DC'),
+       ('DDC', 'Dodge City, KS'),
+       ('DEC', 'Decatur, IL'),
+       ('DEN', 'Denver, CO'),
+       ('DFW', 'Dallas/Fort Worth, TX'),
+       ('DHN', 'Dothan, AL'),
+       ('DIK', 'Dickinson, ND'),
+       ('DLG', 'Dillingham, AK'),
+       ('DLH', 'Duluth, MN'),
+       ('DRO', 'Durango, CO'),
+       ('DRT', 'Del Rio, TX'),
+       ('DSM', 'Des Moines, IA'),
+       ('DTW', 'Detroit, MI'),
+       ('DVL', 'Devils Lake, ND'),
+       ('EAR', 'Kearney, NE'),
+       ('EAT', 'Wenatchee, WA'),
+       ('EAU', 'Eau Claire, WI'),
+       ('ECP', 'Panama City, FL'),
+       ('EGE', 'Eagle, CO'),
+       ('EKO', 'Elko, NV'),
+       ('ELM', 'Elmira/Corning, NY'),
+       ('ELP', 'El Paso, TX'),
+       ('ERI', 'Erie, PA'),
+       ('ESC', 'Escanaba, MI'),
+       ('EUG', 'Eugene, OR'),
+       ('EVV', 'Evansville, IN'),
+       ('EWN', 'New Bern/Morehead/Beaufort, NC'),
+       ('EWR', 'Newark, NJ'),
+       ('EYW', 'Key West, FL'),
+       ('FAI', 'Fairbanks, AK'),
+       ('FAR', 'Fargo, ND'),
+       ('FAT', 'Fresno, CA'),
+       ('FAY', 'Fayetteville, NC'),
+       ('FCA', 'Kalispell, MT'),
+       ('FLG', 'Flagstaff, AZ'),
+       ('FLL', 'Fort Lauderdale, FL'),
+       ('FLO', 'Florence, SC'),
+       ('FNT', 'Flint, MI'),
+       ('FOD', 'Fort Dodge, IA'),
+       ('FSD', 'Sioux Falls, SD'),
+       ('FSM', 'Fort Smith, AR'),
+       ('FWA', 'Fort Wayne, IN'),
+       ('GCC', 'Gillette, WY'),
+       ('GCK', 'Garden City, KS'),
+       ('GEG', 'Spokane, WA'),
+       ('GFK', 'Grand Forks, ND'),
+       ('GGG', 'Longview, TX'),
+       ('GJT', 'Grand Junction, CO'),
+       ('GNV', 'Gainesville, FL'),
+       ('GPT', 'Gulfport/Biloxi, MS'),
+       ('GRB', 'Green Bay, WI'),
+       ('GRI', 'Grand Island, NE'),
+       ('GRK', 'Killeen, TX'),
+       ('GRR', 'Grand Rapids, MI'),
+       ('GSO', 'Greensboro/High Point, NC'),
+       ('GSP', 'Greer, SC'),
+       ('GST', 'Gustavus, AK'),
+       ('GTF', 'Great Falls, MT'),
+       ('GTR', 'Columbus, MS'),
+       ('GUC', 'Gunnison, CO'),
+       ('GUM', 'Guam, TT'),
+       ('HDN', 'Hayden, CO'),
+       ('HGR', 'Hagerstown, MD'),
+       ('HHH', 'Hilton Head, SC'),
+       ('HIB', 'Hibbing, MN'),
+       ('HLN', 'Helena, MT'),
+       ('HNL', 'Honolulu, HI'),
+       ('HOB', 'Hobbs, NM'),
+       ('HOU', 'Houston, TX'),
+       ('HPN', 'White Plains, NY'),
+       ('HRL', 'Harlingen/San Benito, TX'),
+       ('HSV', 'Huntsville, AL'),
+       ('HTS', 'Ashland, WV'),
+       ('HVN', 'New Haven, CT'),
+       ('HYA', 'Hyannis, MA'),
+       ('HYS', 'Hays, KS'),
+       ('IAD', 'Washington, DC'),
+       ('IAG', 'Niagara Falls, NY'),
+       ('IAH', 'Houston, TX'),
+       ('ICT', 'Wichita, KS'),
+       ('IDA', 'Idaho Falls, ID'),
+       ('ILG', 'Wilmington, DE'),
+       ('ILM', 'Wilmington, NC'),
+       ('IMT', 'Iron Mountain/Kingsfd, MI'),
+       ('IND', 'Indianapolis, IN'),
+       ('INL', 'International Falls, MN'),
+       ('IPT', 'Williamsport, PA'),
+       ('ISN', 'Williston, ND'),
+       ('ISP', 'Islip, NY'),
+       ('ITH', 'Ithaca/Cortland, NY'),
+       ('ITO', 'Hilo, HI'),
+       ('JAC', 'Jackson, WY'),
+       ('JAN', 'Jackson/Vicksburg, MS'),
+       ('JAX', 'Jacksonville, FL'),
+       ('JFK', 'New York, NY'),
+       ('JLN', 'Joplin, MO'),
+       ('JMS', 'Jamestown, ND'),
+       ('JNU', 'Juneau, AK'),
+       ('JST', 'Johnstown, PA'),
+       ('KOA', 'Kona, HI'),
+       ('KTN', 'Ketchikan, AK'),
+       ('LAN', 'Lansing, MI'),
+       ('LAR', 'Laramie, WY'),
+       ('LAS', 'Las Vegas, NV'),
+       ('LAW', 'Lawton/Fort Sill, OK'),
+       ('LAX', 'Los Angeles, CA'),
+       ('LBB', 'Lubbock, TX'),
+       ('LBE', 'Latrobe, PA'),
+       ('LBF', 'North Platte, NE'),
+       ('LBL', 'Liberal, KS'),
+       ('LCH', 'Lake Charles, LA'),
+       ('LCK', 'Columbus, OH'),
+       ('LEX', 'Lexington, KY'),
+       ('LFT', 'Lafayette, LA'),
+       ('LGA', 'New York, NY'),
+       ('LGB', 'Long Beach, CA'),
+       ('LIH', 'Lihue, HI'),
+       ('LIT', 'Little Rock, AR'),
+       ('LNK', 'Lincoln, NE'),
+       ('LRD', 'Laredo, TX'),
+       ('LSE', 'La Crosse, WI'),
+       ('LWB', 'Lewisburg, WV'),
+       ('LWS', 'Lewiston, ID'),
+       ('LYH', 'Lynchburg, VA'),
+       ('MAF', 'Midland/Odessa, TX'),
+       ('MBS', 'Saginaw/Bay City/Midland, MI'),
+       ('MCI', 'Kansas City, MO'),
+       ('MCO', 'Orlando, FL'),
+       ('MCW', 'Mason City, IA'),
+       ('MDT', 'Harrisburg, PA'),
+       ('MDW', 'Chicago, IL'),
+       ('MEI', 'Meridian, MS'),
+       ('MEM', 'Memphis, TN'),
+       ('MFE', 'Mission/McAllen/Edinburg, TX'),
+       ('MFR', 'Medford, OR'),
+       ('MGM', 'Montgomery, AL'),
+       ('MHK', 'Manhattan/Ft. Riley, KS'),
+       ('MHT', 'Manchester, NH'),
+       ('MIA', 'Miami, FL'),
+       ('MKE', 'Milwaukee, WI'),
+       ('MKG', 'Muskegon, MI'),
+       ('MLB', 'Melbourne, FL'),
+       ('MLI', 'Moline, IL'),
+       ('MLU', 'Monroe, LA'),
+       ('MMH', 'Mammoth Lakes, CA'),
+       ('MOB', 'Mobile, AL'),
+       ('MOT', 'Minot, ND'),
+       ('MQT', 'Marquette, MI'),
+       ('MRY', 'Monterey, CA'),
+       ('MSN', 'Madison, WI'),
+       ('MSO', 'Missoula, MT'),
+       ('MSP', 'Minneapolis, MN'),
+       ('MSY', 'New Orleans, LA'),
+       ('MTJ', 'Montrose/Delta, CO'),
+       ('MVY', 'Martha''s Vineyard, MA'),
+       ('MYR', 'Myrtle Beach, SC'),
+       ('OAJ', 'Jacksonville/Camp Lejeune, NC'),
+       ('OAK', 'Oakland, CA'),
+       ('OGD', 'Ogden, UT'),
+       ('OGG', 'Kahului, HI'),
+       ('OGS', 'Ogdensburg, NY'),
+       ('OKC', 'Oklahoma City, OK'),
+       ('OMA', 'Omaha, NE'),
+       ('OME', 'Nome, AK'),
+       ('ONT', 'Ontario, CA'),
+       ('ORD', 'Chicago, IL'),
+       ('ORF', 'Norfolk, VA'),
+       ('ORH', 'Worcester, MA'),
+       ('OTH', 'North Bend/Coos Bay, OR'),
+       ('OTZ', 'Kotzebue, AK'),
+       ('OWB', 'Owensboro, KY'),
+       ('PAE', 'Everett, WA'),
+       ('PAH', 'Paducah, KY'),
+       ('PBG', 'Plattsburgh, NY'),
+       ('PBI', 'West Palm Beach/Palm Beach, FL'),
+       ('PDX', 'Portland, OR'),
+       ('PGD', 'Punta Gorda, FL'),
+       ('PGV', 'Greenville, NC'),
+       ('PHF', 'Newport News/Williamsburg, VA'),
+       ('PHL', 'Philadelphia, PA'),
+       ('PHX', 'Phoenix, AZ'),
+       ('PIA', 'Peoria, IL'),
+       ('PIB', 'Hattiesburg/Laurel, MS'),
+       ('PIE', 'St. Petersburg, FL'),
+       ('PIH', 'Pocatello, ID'),
+       ('PIR', 'Pierre, SD'),
+       ('PIT', 'Pittsburgh, PA'),
+       ('PLN', 'Pellston, MI'),
+       ('PNS', 'Pensacola, FL'),
+       ('PPG', 'Pago Pago, TT'),
+       ('PRC', 'Prescott, AZ'),
+       ('PSC', 'Pasco/Kennewick/Richland, WA'),
+       ('PSE', 'Ponce, PR'),
+       ('PSG', 'Petersburg, AK'),
+       ('PSM', 'Portsmouth, NH'),
+       ('PSP', 'Palm Springs, CA'),
+       ('PUB', 'Pueblo, CO'),
+       ('PUW', 'Pullman, WA'),
+       ('PVD', 'Providence, RI'),
+       ('PVU', 'Provo, UT'),
+       ('PWM', 'Portland, ME'),
+       ('RAP', 'Rapid City, SD'),
+       ('RDD', 'Redding, CA'),
+       ('RDM', 'Bend/Redmond, OR'),
+       ('RDU', 'Raleigh/Durham, NC'),
+       ('RFD', 'Rockford, IL'),
+       ('RHI', 'Rhinelander, WI'),
+       ('RIC', 'Richmond, VA'),
+       ('RIW', 'Riverton/Lander, WY'),
+       ('RKS', 'Rock Springs, WY'),
+       ('RNO', 'Reno, NV'),
+       ('ROA', 'Roanoke, VA'),
+       ('ROC', 'Rochester, NY'),
+       ('ROW', 'Roswell, NM'),
+       ('RST', 'Rochester, MN'),
+       ('RSW', 'Fort Myers, FL'),
+       ('SAF', 'Santa Fe, NM'),
+       ('SAN', 'San Diego, CA'),
+       ('SAT', 'San Antonio, TX'),
+       ('SAV', 'Savannah, GA'),
+       ('SBA', 'Santa Barbara, CA'),
+       ('SBN', 'South Bend, IN'),
+       ('SBP', 'San Luis Obispo, CA'),
+       ('SCC', 'Deadhorse, AK'),
+       ('SCE', 'State College, PA'),
+       ('SCK', 'Stockton, CA'),
+       ('SDF', 'Louisville, KY'),
+       ('SEA', 'Seattle, WA'),
+       ('SFB', 'Sanford, FL'),
+       ('SFO', 'San Francisco, CA'),
+       ('SGF', 'Springfield, MO'),
+       ('SGU', 'St. George, UT'),
+       ('SHD', 'Staunton, VA'),
+       ('SHR', 'Sheridan, WY'),
+       ('SHV', 'Shreveport, LA'),
+       ('SIT', 'Sitka, AK'),
+       ('SJC', 'San Jose, CA'),
+       ('SJT', 'San Angelo, TX'),
+       ('SJU', 'San Juan, PR'),
+       ('SLC', 'Salt Lake City, UT'),
+       ('SLN', 'Salina, KS'),
+       ('SMF', 'Sacramento, CA'),
+       ('SMX', 'Santa Maria, CA'),
+       ('SNA', 'Santa Ana, CA'),
+       ('SPI', 'Springfield, IL'),
+       ('SPN', 'Saipan, TT'),
+       ('SPS', 'Wichita Falls, TX'),
+       ('SRQ', 'Sarasota/Bradenton, FL'),
+       ('STC', 'St. Cloud, MN'),
+       ('STL', 'St. Louis, MO'),
+       ('STS', 'Santa Rosa, CA'),
+       ('STT', 'Charlotte Amalie, VI'),
+       ('STX', 'Christiansted, VI'),
+       ('SUN', 'Sun Valley/Hailey/Ketchum, ID'),
+       ('SUX', 'Sioux City, IA'),
+       ('SWF', 'Newburgh/Poughkeepsie, NY'),
+       ('SWO', 'Stillwater, OK'),
+       ('SYR', 'Syracuse, NY'),
+       ('TBN', 'Fort Leonard Wood, MO'),
+       ('TLH', 'Tallahassee, FL'),
+       ('TOL', 'Toledo, OH'),
+       ('TPA', 'Tampa, FL'),
+       ('TRI', 'Bristol/Johnson City/Kingsport, TN'),
+       ('TTN', 'Trenton, NJ'),
+       ('TUL', 'Tulsa, OK'),
+       ('TUS', 'Tucson, AZ'),
+       ('TVC', 'Traverse City, MI'),
+       ('TWF', 'Twin Falls, ID'),
+       ('TXK', 'Texarkana, AR'),
+       ('TYR', 'Tyler, TX'),
+       ('TYS', 'Knoxville, TN'),
+       ('UIN', 'Quincy, IL'),
+       ('USA', 'Concord, NC'),
+       ('USA', 'CONCORD, NC'),
+       ('VCT', 'Victoria, TX'),
+       ('VEL', 'Vernal, UT'),
+       ('VLD', 'Valdosta, GA'),
+       ('VPS', 'Valparaiso, FL'),
+       ('WRG', 'Wrangell, AK'),
+       ('WYS', 'West Yellowstone, MT'),
+       ('XNA', 'Fayetteville, AR'),
+       ('XWA', 'Williston, ND'),
+       ('YAK', 'Yakutat, AK'),
+       ('YKM', 'Yakima, WA'),
+       ('YUM', 'Yuma, AZ');
