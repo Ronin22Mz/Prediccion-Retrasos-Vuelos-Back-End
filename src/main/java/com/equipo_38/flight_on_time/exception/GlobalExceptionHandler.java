@@ -45,4 +45,11 @@ public class GlobalExceptionHandler {
                 .body(new ApiResponseError("Validation Data Error", validationMessage,
                         httpServletRequest.getRequestURL().toString(), httpServletRequest.getMethod(), LocalDateTime.now()));
     }
+
+    @ExceptionHandler(RouteNotFoundException.class)
+    public ResponseEntity<ApiResponseError> handlerRouteNotFoundException(HttpServletRequest httpServletRequest, RouteNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiResponseError("Route not found", exception.getLocalizedMessage(),
+                        httpServletRequest.getRequestURL().toString(), httpServletRequest.getMethod(), LocalDateTime.now()));
+    }
 }
