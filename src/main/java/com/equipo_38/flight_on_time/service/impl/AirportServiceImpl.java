@@ -45,8 +45,8 @@ public class AirportServiceImpl implements IAirportService {
             key = "#idAirline",
             unless = "#result == null || #result.content.isEmpty()"
     )
-    public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline) {
-        List<AirportResponseDTO> result = airlineDestinationAirportRepository.findDestinationsDtoByAirlineId(idAirline);
+    public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline, Long idOrigin) {
+        List<AirportResponseDTO> result = airportRepository.findDestinationsDTOByAirlineAndOrigin(idAirline,idOrigin);
         return new ResponsePageDTO<>(result, result.size());
     }
 
