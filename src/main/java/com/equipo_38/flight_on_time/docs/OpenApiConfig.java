@@ -2,6 +2,7 @@ package com.equipo_38.flight_on_time.docs;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -9,13 +10,24 @@ import org.springframework.stereotype.Component;
 public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenApi() {
-        return new OpenAPI().info(apiInfo());
+        OpenAPI openAPI = new OpenAPI().info(apiInfo());
+        openAPI.addServersItem(productionServer());
+        openAPI.addServersItem(devServer());
+        return openAPI;
+    }
+
+    private Server productionServer() {
+        return new Server().url("https://flight-on-time-38.duckdns.org");
+    }
+
+    private Server devServer() {
+        return new Server().url("http://localhost:8080");
     }
 
     private Info apiInfo() {
         return new Info()
                 .title("Flight On Time")
-                .version("1.0")
+                .version("1.0.4")
                 .description("""
                         ### FlightOnTime - Predicción de Retrasos Aéreos
                         
@@ -24,10 +36,10 @@ public class OpenApiConfig {
                         
                         #### Stack Tecnológico
                         * **Core:** Java 21 + Spring Boot 3
-                        * **Base de Datos:** PostgreSQL 17 (Dockerizado)
+                        * **Base de Datos:** PostgreSQL 17 (Supabase)
                         * **IA Integration:** Feign Client (comunicación con microservicio Python)
                         * **Documentación:** OpenAPI 3 + Swagger UI
-                        * **Infraestructura:** Docker & Docker Compose
+                        * **Infraestructura:** Oracle Cloud Infrastructure
                         
                         ####  Funcionalidades Principales
                         1.  **Predicción (/predict):** Endpoint principal que conecta con el modelo de Data Science.
