@@ -7,5 +7,5 @@ public interface IAirportService {
     void validateCityCode(String airportCode);
     ResponsePageDTO<AirportResponseDTO> getAllOriginsForAirline(Long idAirline);
 
-    ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline);
+    ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline, Long idOrigin);
 }
