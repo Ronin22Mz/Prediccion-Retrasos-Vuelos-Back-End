@@ -74,7 +74,7 @@ public class FrontFlightController implements IStandardApiResponses {
         return ResponseEntity.ok(airportService.getAllOriginsForAirline(idAirline));
     }
 
-    @GetMapping("/destinations-by-airline/{idAirline}")
+    @GetMapping("/destinations-by-airline/{idAirline}/{idOrigin}")
     @Operation(
             summary = "Devuelve todos los destinos de una aerolínea en especifico",
             description = """
@@ -92,8 +92,8 @@ public class FrontFlightController implements IStandardApiResponses {
                     )
             }
     )
-    public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllDestinationsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline) {
-        return ResponseEntity.ok(airportService.getAllDestinationsForAirline(idAirline));
+    public ResponseEntity<ResponsePageDTO<AirportResponseDTO>> getAllDestinationsForAirline(@PathVariable("idAirline") @Min(1) Long idAirline, @PathVariable("idOrigin") @Min(1) Long idOrigin) {
+        return ResponseEntity.ok(airportService.getAllDestinationsForAirline(idAirline,idOrigin));
     }
 
     @GetMapping("/distance/{idOrigin}/{idDestination}")
