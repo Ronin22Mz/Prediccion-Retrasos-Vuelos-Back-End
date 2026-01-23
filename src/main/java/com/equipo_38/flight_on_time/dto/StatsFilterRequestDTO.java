@@ -1,5 +1,8 @@
 package com.equipo_38.flight_on_time.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public record StatsFilterRequestDTO(
         String airlineCode,
         String originCode,

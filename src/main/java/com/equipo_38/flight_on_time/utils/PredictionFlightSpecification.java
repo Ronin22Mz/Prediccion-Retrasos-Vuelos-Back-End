@@ -9,8 +9,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-//Filtro aplicado directamente a la base de datos por medio de criteria builder
 public class PredictionFlightSpecification {
+
     private PredictionFlightSpecification() {
     }
 
@@ -21,31 +21,30 @@ public class PredictionFlightSpecification {
 
             List<Predicate> predicates = new ArrayList<>();
 
-            if (filter.airlineCode() != null && !filter.airlineCode().isBlank()) {
+            if (hasText(filter.airlineCode())) {
                 predicates.add(cb.equal(root.get("airline"), filter.airlineCode()));
             }
 
-            if (filter.originCode() != null && !filter.originCode().isBlank()) {
+            if (hasText(filter.originCode())) {
                 predicates.add(cb.equal(root.get("origin"), filter.originCode()));
             }
 
-            if (filter.destinationCode() != null && !filter.destinationCode().isBlank()) {
+            if (hasText(filter.destinationCode())) {
                 predicates.add(cb.equal(root.get("destination"), filter.destinationCode()));
             }
 
-            // 🗓️ Construcción de rango de fechas
-            if (filter.initYear() > 0 && filter.endYear() > 0) {
+            if (filter.initYear() != null && filter.endYear() != null) {
 
                 LocalDate startDate = LocalDate.of(
                         filter.initYear(),
-                        filter.initMonth() > 0 ? filter.initMonth() : 1,
-                        filter.initDay() > 0 ? filter.initDay() : 1
+                        defaultIfNull(filter.initMonth(), 1),
+                        defaultIfNull(filter.initDay(), 1)
                 );
 
                 LocalDate endDate = LocalDate.of(
                         filter.endYear(),
-                        filter.endMonth() > 0 ? filter.endMonth() : 12,
-                        filter.endDay() > 0 ? filter.endDay() : 31
+                        defaultIfNull(filter.endMonth(), 12),
+                        defaultIfNull(filter.endDay(), 31)
                 );
 
                 predicates.add(
@@ -59,5 +58,13 @@ public class PredictionFlightSpecification {
 
             return cb.and(predicates.toArray(new Predicate[0]));
         };
+    }
+
+    private static boolean hasText(String value) {
+        return value != null && !value.isBlank();
+    }
+
+    private static int defaultIfNull(Integer value, int defaultValue) {
+        return value != null ? value : defaultValue;
     }
 }
