@@ -2,6 +2,7 @@ package com.equipo_38.flight_on_time.mapper;
 
 import com.equipo_38.flight_on_time.dto.FlightRequestDTO;
 import com.equipo_38.flight_on_time.dto.PredictionDSResponseDTO;
+import com.equipo_38.flight_on_time.dto.PredictionRecordDTO;
 import com.equipo_38.flight_on_time.dto.PredictionResponseDTO;
 import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
@@ -48,5 +49,21 @@ public class FlightPredictionMapper {
         entity.setPredictionResult(response.forecast());
         entity.setProbability(response.probability());
         return entity;
+    }
+
+
+    public PredictionRecordDTO fromPredictionFlight(PredictionFlight predictionFlight){
+
+        return new PredictionRecordDTO(
+                predictionFlight.getAirline(),
+                predictionFlight.getOrigin(),
+                predictionFlight.getDestination(),
+                predictionFlight.getDepartureDate(),
+                predictionFlight.getDepartureHour(),
+                predictionFlight.getArrivedHour(),
+                predictionFlight.getDistanceKm(),
+                predictionFlight.getPredictionResult(),
+                predictionFlight.getProbability()
+        );
     }
 }
