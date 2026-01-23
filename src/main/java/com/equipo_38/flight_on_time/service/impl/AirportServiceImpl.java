@@ -3,6 +3,9 @@ package com.equipo_38.flight_on_time.service.impl;
 import com.equipo_38.flight_on_time.dto.AirportResponseDTO;
 import com.equipo_38.flight_on_time.dto.ResponsePageDTO;
 import com.equipo_38.flight_on_time.exception.CityNotFoundException;
+import com.equipo_38.flight_on_time.mapper.AirportMapper;
+import com.equipo_38.flight_on_time.model.Airline;
+import com.equipo_38.flight_on_time.model.Airport;
 import com.equipo_38.flight_on_time.repository.IAirlineDestinationAirportRepository;
 import com.equipo_38.flight_on_time.repository.IAirlineOriginAirportRepository;
 import com.equipo_38.flight_on_time.repository.IAirportRepository;
@@ -19,7 +22,7 @@ public class AirportServiceImpl implements IAirportService {
 
     private final IAirportRepository airportRepository;
     private final IAirlineOriginAirportRepository airlineOriginAirportRepository;
-    private final IAirlineDestinationAirportRepository airlineDestinationAirportRepository;
+    private final AirportMapper airportMapper;
 
     @Override
     public void validateCityCode(String airportCode) {
@@ -48,6 +51,18 @@ public class AirportServiceImpl implements IAirportService {
     public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline, Long idOrigin) {
         List<AirportResponseDTO> result = airportRepository.findDestinationsDTOByAirlineAndOrigin(idAirline,idOrigin);
         return new ResponsePageDTO<>(result, (long)result.size());
+    }
+
+    @Override
+    @Cacheable(
+            cacheNames = "airports",
+            unless = "#result.content.isEmpty()"
+    )
+    public ResponsePageDTO<AirportResponseDTO> getAllAirports() {
+        List<Airport> airports = airportRepository.findAll();
+
+        return new ResponsePageDTO<>(airports
+                .stream().map(airportMapper::fromAirportEntity).toList(),(long)airports.size());
     }
 
 }
