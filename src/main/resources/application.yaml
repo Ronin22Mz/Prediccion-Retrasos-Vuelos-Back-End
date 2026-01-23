@@ -40,3 +40,12 @@ resilience4j:
 rate-limit:
   ip:
     request-per-minute: ${RATE_LIMITER_VALUE:60}
+
+#APIs
+url:
+  frontend:
+    dev: ${URL_FRONTEND_DEV:http://localhost:5173}
+    web: ${URL_FRONTEND_WEB:https://prediccion-retrasos-vuelos-front-crqui9iha.vercel.app}
+  backend:
+    dev: ${URL_BACKEND_DEV:http://locahost:8080}
+    server: ${URL_BACKEND_SERVER:https://flight-on-time-38.duckdns.org}
