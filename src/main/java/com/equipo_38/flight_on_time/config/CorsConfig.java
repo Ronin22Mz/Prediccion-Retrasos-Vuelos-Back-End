@@ -1,5 +1,6 @@
 package com.equipo_38.flight_on_time.config;
 
+import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -21,7 +22,7 @@ public class CorsConfig {
 
         return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(CorsRegistry registry) {
+            public void addCorsMappings(@NonNull CorsRegistry registry) {
                 WebMvcConfigurer.super.addCorsMappings(registry);
                 registry.addMapping("/**")
                         .allowedOrigins(urlFrontendDev, urlFrontendWeb, urlBackendDev, urlBackendServer)
