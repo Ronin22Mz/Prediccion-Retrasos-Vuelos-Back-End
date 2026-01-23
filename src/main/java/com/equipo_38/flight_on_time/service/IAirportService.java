@@ -8,4 +8,6 @@ public interface IAirportService {
     ResponsePageDTO<AirportResponseDTO> getAllOriginsForAirline(Long idAirline);
 
     ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline, Long idOrigin);
+
+    ResponsePageDTO<AirportResponseDTO> getAllAirports();
 }
