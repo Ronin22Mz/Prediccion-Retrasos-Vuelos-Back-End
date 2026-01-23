@@ -34,6 +34,6 @@ public class AirlineServiceImpl implements IAirlineService {
     )
     public ResponsePageDTO<AirlineResponseDTO> getAllAirlines() {
         List<Airline> airlines = airlineRepository.findAll();
-        return new ResponsePageDTO<>(airlines.stream().map(airlineMapper::fromAirlineEntity).toList(), airlines.size());
+        return new ResponsePageDTO<>(airlines.stream().map(airlineMapper::fromAirlineEntity).toList(),(long)airlines.size());
     }
 }

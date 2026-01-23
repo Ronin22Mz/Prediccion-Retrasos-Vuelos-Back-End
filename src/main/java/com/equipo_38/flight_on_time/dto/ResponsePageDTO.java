@@ -4,6 +4,6 @@ import java.util.List;
 
 public record ResponsePageDTO<T>(
         List<T> content,
-        int size
+        Long size
 ) {
 }

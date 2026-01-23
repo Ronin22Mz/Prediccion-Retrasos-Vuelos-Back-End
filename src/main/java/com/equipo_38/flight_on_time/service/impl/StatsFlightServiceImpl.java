@@ -1,14 +1,15 @@
 package com.equipo_38.flight_on_time.service.impl;
 
-import com.equipo_38.flight_on_time.dto.StatsFilterRequestDTO;
-import com.equipo_38.flight_on_time.dto.StatsResponseDTO;
-import com.equipo_38.flight_on_time.dto.TemporalEvolutionDTO;
+import com.equipo_38.flight_on_time.dto.*;
+import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
 import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
 import com.equipo_38.flight_on_time.service.IStatsFlightService;
 import com.equipo_38.flight_on_time.utils.PredictionFlightSpecification;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 public class StatsFlightServiceImpl implements IStatsFlightService {
 
     private final IFlightPredictionRepository flightPredictionRepository;
+    private final FlightPredictionMapper flightPredictionMapper;
 
     @Override
     public StatsResponseDTO getStats(StatsFilterRequestDTO filter) {
@@ -58,6 +60,12 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
                 delayedPercentage,
                 temporalEvolution
         );
+    }
+
+    @Override
+    public ResponsePageDTO<PredictionRecordDTO> getPredictionRecords(Pageable pageable) {
+        Page<PredictionFlight> flights = flightPredictionRepository.findAll(pageable);
+        return new ResponsePageDTO<>(flights.map(flightPredictionMapper::fromPredictionFlight).getContent(),flights.getTotalElements());
     }
 
     private double calculatePercentage(long value, long total) {
