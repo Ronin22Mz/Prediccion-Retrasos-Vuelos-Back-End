@@ -4,12 +4,12 @@ public record StatsFilterRequestDTO(
         String airlineCode,
         String originCode,
         String destinationCode,
-        int initYear,
-        int endYear,
-        int initMonth,
-        int endMonth,
-        int initDay,
-        int endDay
+        Integer initYear,
+        Integer endYear,
+        Integer initMonth,
+        Integer endMonth,
+        Integer initDay,
+        Integer endDay
 
 ) {
 }
