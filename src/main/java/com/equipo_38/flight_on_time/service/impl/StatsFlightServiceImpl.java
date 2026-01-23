@@ -2,9 +2,13 @@ package com.equipo_38.flight_on_time.service.impl;
 
 import com.equipo_38.flight_on_time.dto.*;
 import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
+import com.equipo_38.flight_on_time.model.Airline;
+import com.equipo_38.flight_on_time.model.Airport;
 import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
+import com.equipo_38.flight_on_time.service.IAirlineService;
+import com.equipo_38.flight_on_time.service.IAirportService;
 import com.equipo_38.flight_on_time.service.IStatsFlightService;
 import com.equipo_38.flight_on_time.utils.PredictionFlightSpecification;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +29,8 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
 
     private final IFlightPredictionRepository flightPredictionRepository;
     private final FlightPredictionMapper flightPredictionMapper;
+    private final IAirportService airportService;
+    private final IAirlineService airlineService;
 
     @Override
     public StatsResponseDTO getStats(StatsFilterRequestDTO filter) {
@@ -65,7 +71,41 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
     @Override
     public ResponsePageDTO<PredictionRecordDTO> getPredictionRecords(Pageable pageable) {
         Page<PredictionFlight> flights = flightPredictionRepository.findAll(pageable);
-        return new ResponsePageDTO<>(flights.map(flightPredictionMapper::fromPredictionFlight).getContent(),flights.getTotalElements());
+        List<AirlineResponseDTO> airlines = airlineService.getAllAirlines().content();
+        List<AirportResponseDTO> airports = airportService.getAllAirports().content();
+        return new ResponsePageDTO<>(flights.map(f-> new PredictionRecordDTO(
+                getAirlineName(f.getAirline(),airlines),
+                getCityName(f.getOrigin(),airports),
+                getCityName(f.getDestination(),airports),
+                f.getDepartureDate(),
+                f.getDepartureHour(),
+                f.getArrivedHour(),
+                f.getDistanceKm(),
+                f.getPredictionResult(),
+                f.getProbability()
+        )).getContent(), flights.getTotalElements());
+    }
+
+    private String getAirlineName(String airlineCode, List<AirlineResponseDTO> airlines) {
+
+
+        return airlines.stream()
+                .filter(a -> a.airlineCode().equals(airlineCode))
+                .findFirst()
+                .map(AirlineResponseDTO::airlineName).orElse(null);
+
+
+    }
+
+    private String getCityName(String cityCode, List<AirportResponseDTO> airports) {
+
+
+        return airports.stream()
+                .filter(a -> a.cityCode().equals(cityCode))
+                .findFirst()
+                .map(AirportResponseDTO::cityName).orElse(null);
+
+
     }
 
     private double calculatePercentage(long value, long total) {
