@@ -54,9 +54,9 @@ public class StatsController implements IStandardApiResponses {
 
     @GetMapping("/records")
     @Operation(
-            summary = "Retorna estadísticas",
+            summary = "Retorna historial de predicciones",
             description = """
-                    Este endpoint alimenta los gráficos estadísticos establecidos.
+                    Este endpoint devuelve todas las predicciones historicas.
                     """,
             responses = {
                     @ApiResponse(
@@ -64,7 +64,7 @@ public class StatsController implements IStandardApiResponses {
                             description = StatusCode.OK_VALUE,
                             content = @Content(
                                     mediaType = MediaType.APPLICATION_JSON_VALUE,
-                                    schema = @Schema(implementation = StatsResponseDTO.class)
+                                    schema = @Schema(implementation = ResponsePageDTO.class)
                             )
                     )
             }
