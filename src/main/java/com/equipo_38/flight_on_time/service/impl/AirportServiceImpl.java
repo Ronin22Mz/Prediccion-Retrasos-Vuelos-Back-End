@@ -36,18 +36,18 @@ public class AirportServiceImpl implements IAirportService {
     )
     public ResponsePageDTO<AirportResponseDTO> getAllOriginsForAirline(Long idAirline) {
         List<AirportResponseDTO> result = airlineOriginAirportRepository.findOriginsDtoByAirlineId(idAirline);
-        return new ResponsePageDTO<>(result, result.size());
+        return new ResponsePageDTO<>(result, (long)result.size());
     }
 
     @Override
     @Cacheable(
             value = "airline-destinations",
-            key = "#idAirline",
+            key = "#idAirline + '-' + #idOrigin",
             unless = "#result == null || #result.content.isEmpty()"
     )
     public ResponsePageDTO<AirportResponseDTO> getAllDestinationsForAirline(Long idAirline, Long idOrigin) {
         List<AirportResponseDTO> result = airportRepository.findDestinationsDTOByAirlineAndOrigin(idAirline,idOrigin);
-        return new ResponsePageDTO<>(result, result.size());
+        return new ResponsePageDTO<>(result, (long)result.size());
     }
 
 }
