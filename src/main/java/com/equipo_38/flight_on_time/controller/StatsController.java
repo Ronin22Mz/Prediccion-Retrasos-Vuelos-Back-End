@@ -15,10 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v3/flights")
@@ -28,7 +25,7 @@ public class StatsController implements IStandardApiResponses {
 
     private final IStatsFlightService statsFlightService;
 
-    @GetMapping("/stats")
+    @PostMapping("/stats")
     @Operation(
             summary = "Retorna estadísticas",
             description = """

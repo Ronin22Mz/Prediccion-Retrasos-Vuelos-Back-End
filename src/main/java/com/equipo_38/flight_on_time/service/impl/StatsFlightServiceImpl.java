@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -109,7 +110,8 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
     }
 
     private double calculatePercentage(long value, long total) {
-        return (double) value * 100 / total;
+        double percentage = (double) value * 100 / total;
+        return Math.round(percentage * 100.0) / 100.0;
     }
 
     private List<TemporalEvolutionDTO> buildTemporalEvolutionGroupedByDay(
@@ -118,9 +120,10 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
         return flights.stream()
                 .collect(Collectors.groupingBy(
                         f -> f.getCreationDate()
-                                .atZone(ZoneId.systemDefault())
+                                .atZone(ZoneOffset.UTC)
                                 .toLocalDate()
                 ))
+
                 .entrySet()
                 .stream()
                 .map(entry -> {
