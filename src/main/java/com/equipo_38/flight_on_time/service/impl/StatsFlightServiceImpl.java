@@ -2,8 +2,6 @@ package com.equipo_38.flight_on_time.service.impl;
 
 import com.equipo_38.flight_on_time.dto.*;
 import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
-import com.equipo_38.flight_on_time.model.Airline;
-import com.equipo_38.flight_on_time.model.Airport;
 import com.equipo_38.flight_on_time.model.FlightStatus;
 import com.equipo_38.flight_on_time.model.PredictionFlight;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
@@ -17,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.Comparator;
 import java.util.List;
@@ -130,13 +127,11 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
                     LocalDate date = entry.getKey();
                     List<PredictionFlight> dayFlights = entry.getValue();
 
-                    // 1️⃣ Estatus dominante del día
                     FlightStatus dominantStatus = dayFlights.stream()
                             .map(PredictionFlight::getPredictionResult)
                             .max(Comparator.comparingInt(Enum::ordinal))
                             .orElse(FlightStatus.ON_TIME);
 
-                    // 2️⃣ Probabilidad promedio del día
                     double avgProbability = dayFlights.stream()
                             .mapToDouble(PredictionFlight::getProbability)
                             .average()
