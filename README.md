@@ -49,6 +49,14 @@ Flight On Time es una solución integral que integra un modelo de Data Science e
 - **Bucket4j**: Rate limiting por IP
 - **Caffeine**: Implementación de caché
 
+#### Infraestructura y DevOps
+
+* **Cloud Provider:** Oracle Cloud Infrastructure (OCI) - Compute VM (Oracle Linux)
+* **Web Server / Reverse Proxy:** Nginx (Manejo de SSL y proxy reverso)
+* **Seguridad:** Fail2Ban (Prevención de intrusiones) y Nginx Hardening
+* **DNS:** DuckDNS (Resolución de nombres dinámica)
+* **Certificados:** Let's Encrypt (HTTPS seguro)
+
 ### Build y Testing
 - **Maven**: Gestión de dependencias y build
 - **JUnit / Spring Boot Test**: Framework de testing
@@ -366,6 +374,29 @@ Para detener los contenedores:
 ```bash
 docker-compose down
 ```
+
+## Despliegue en Producción (OCI)
+
+El backend se encuentra desplegado en una instancia de computación en **Oracle Cloud Infrastructure (OCI)**, implementando una arquitectura de seguridad por capas para proteger la API REST.
+
+### Arquitectura de Despliegue
+
+1. **Entry Point:** El tráfico ingresa a través de un dominio seguro (`https://flight-on-time-38.duckdns.org`).
+2. **Reverse Proxy (Nginx):**
+  * Terminación SSL con certificados **Let's Encrypt**.
+  * Reglas de **Hardening** personalizadas para bloquear escáneres de vulnerabilidades, bots y acceso a archivos sensibles (`.env`, `.git`, scripts PHP).
+  * Manejo de códigos de respuesta `444` (Connection Closed) para tráfico malicioso, optimizando el uso de CPU y ancho de banda.
+3. **Seguridad Activa (Fail2Ban):**
+  * Monitoreo en tiempo real de los logs de acceso de Nginx.
+  * Baneo automático de IPs (Jail `nginx-botsearch`) con políticas incrementales de tiempo para atacantes reincidentes.
+4. **Application Layer:** Contenedores Docker ejecutando la aplicación Spring Boot (Java 21).
+
+### Acceso al Entorno de Producción
+
+* **Base URL:** `https://flight-on-time-38.duckdns.org`
+* **Swagger UI (Prod):** `https://flight-on-time-38.duckdns.org/docs/swagger-ui.html`
+* **Health Check:** Protegido mediante reglas de firewall a nivel de aplicación.
+
 
 ## Migraciones de Base de Datos
 
