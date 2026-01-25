@@ -9,7 +9,7 @@ import com.equipo_38.flight_on_time.service.IAirlineService;
 import com.equipo_38.flight_on_time.service.IAirportService;
 import com.equipo_38.flight_on_time.service.IFlightService;
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Validator; // <--- IMPORTANTE: Jakarta Validation
+import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -51,128 +51,105 @@ public class FlightServiceImpl implements IFlightService {
     public BatchPredictionDTO batchPrediction(MultipartFile file) {
 
         List<BatchItemDTO> items = new ArrayList<>();
-        int successful = 0;
-        int failed = 0;
         int rowNumber = 0;
 
-        // Try-with-resources: Cierra el archivo automáticamente al terminar
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
+        try (BufferedReader br = new BufferedReader(
+                new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
 
             String line;
             while ((line = br.readLine()) != null) {
                 rowNumber++;
 
-                // 1. Ignorar encabezados (si la línea dice "airline" o "aerolinea")
-                if (rowNumber == 1 && (line.toLowerCase().contains("airline") || line.toLowerCase().contains("aerolinea"))) {
+                if (shouldSkipLine(rowNumber, line)) {
                     continue;
                 }
 
-                // 2. Ignorar líneas vacías
-                if (line.trim().isEmpty()) {
-                    continue;
-                }
-
-                try {
-                    // 3. Parseo Manual (String -> DTO)
-                    String[] data = line.split(",");
-
-                    // Validar columnas mínimas (asumimos 7 columnas según tu ejemplo)
-                    if (data.length < 7) {
-                        throw new IllegalArgumentException("Columnas insuficientes (se esperaban 7)");
-                    }
-
-                    // Limpieza de datos (trim) y conversión
-                    String airline = data[0].trim();
-                    String origin = data[1].trim();
-                    String destination = data[2].trim();
-                    // Asumimos formato estándar ISO (YYYY-MM-DD y HH:MM)
-                    LocalDate date = LocalDate.parse(data[3].trim());
-                    LocalTime depHour = LocalTime.parse(data[4].trim());
-                    LocalTime arrHour = LocalTime.parse(data[5].trim());
-                    Double distance = Double.parseDouble(data[6].trim());
-
-                    FlightRequestDTO requestDTO = new FlightRequestDTO(
-                            airline, origin, destination, date, depHour, arrHour, distance
-                    );
-
-                    // 4. Validación Automática (@NotNull, @Pattern, etc.)
-                    // Usamos el 'validator' inyectado para revisar las reglas de tu DTO
-                    Set<ConstraintViolation<FlightRequestDTO>> violations = validator.validate(requestDTO);
-
-                    if (!violations.isEmpty()) {
-                        String errorMsg = violations.stream()
-                                .map(ConstraintViolation::getMessage)
-                                .collect(Collectors.joining(", "));
-                        throw new IllegalArgumentException("Datos inválidos: " + errorMsg);
-                    }
-
-                    // 5. Validación de Negocio (Tu método custom en el DTO)
-                    if (!requestDTO.isValidRoute()) {
-                        throw new IllegalArgumentException("Ruta inválida: Origen y destino son iguales");
-                    }
-
-                    // 6. Predicción (Llamamos a tu lógica existente)
-                    PredictionResponseDTO prediction = this.getPrediction(requestDTO);
-
-                    // 7. Registro de Éxito
-                    items.add(new BatchItemDTO(
-                            rowNumber,
-                            "SUCCESS",
-                            requestDTO,
-                            prediction,
-                            null
-                    ));
-                    successful++;
-
-                } catch (Exception e) {
-                    // 8. Manejo de Error por Fila (No detiene el proceso)
-                    // Captura errores de formato de fecha, validación o lógica
-                    items.add(new BatchItemDTO(
-                            rowNumber,
-                            "FAILED",
-                            null,
-                            null,
-                            e.getMessage() // Guardamos el motivo del fallo
-                    ));
-                    failed++;
-                }
+                BatchItemDTO item = safeProcessLine(line, rowNumber);
+                items.add(item);
             }
 
         } catch (IOException e) {
-            // Error GRAVE (Problema de lectura de disco/archivo)
-            // Aquí usamos tu excepción personalizada
-            throw new BatchFileProcessingException("Error fatal al procesar el archivo CSV: " + e.getMessage());
+            throw new BatchFileProcessingException(
+                    "Error fatal al procesar el archivo CSV");
         }
 
-        return new BatchPredictionDTO(successful + failed, successful, failed, items);
-    }
+        long successful = items.stream().filter(i -> "SUCCESS".equals(i.status())).count();
+        long failed = items.size() - successful;
 
-    private boolean processLine(String line, List<PredictionResponseDTO> results) {
-        try {
-            FlightRequestDTO request = getFlightRequestDTO(line);
-            PredictionResponseDTO response = getPrediction(request);
-            results.add(response);
-            return true;
-        } catch (Exception e) {
-            // Error por fila → no corta el batch
-            return false;
-        }
-    }
-
-    private FlightRequestDTO getFlightRequestDTO(String line) {
-        String[] columns = line.split(",");
-
-        FlightRequestDTO request = new FlightRequestDTO(
-                columns[0].trim(),                       // airline
-                columns[1].trim(),                       // origin
-                columns[2].trim(),                       // destination
-                LocalDate.parse(columns[3].trim()),     // flightDate
-                LocalTime.parse(columns[4].trim()),      //DepartureHour
-                LocalTime.parse(columns[5].trim()),      //ArrivedHour
-                Double.parseDouble(columns[6].trim())    // distanceKm
+        return new BatchPredictionDTO(
+                items.size(),
+                (int) successful,
+                (int) failed,
+                items
         );
-        validationData(request);
-        return request;
+    }
+
+    private BatchItemDTO safeProcessLine(String line, int rowNumber) {
+        try {
+            FlightRequestDTO requestDTO = parseAndValidate(line);
+            PredictionResponseDTO prediction = getPrediction(requestDTO);
+
+            return new BatchItemDTO(
+                    rowNumber,
+                    "SUCCESS",
+                    requestDTO,
+                    prediction,
+                    null
+            );
+
+        } catch (RuntimeException e) {
+            return new BatchItemDTO(
+                    rowNumber,
+                    "FAILED",
+                    null,
+                    null,
+                    e.getMessage()
+            );
+        }
+    }
+
+    private FlightRequestDTO parseAndValidate(String line) {
+
+        FlightRequestDTO requestDTO = getRequestDTO(line);
+
+        Set<ConstraintViolation<FlightRequestDTO>> violations = validator.validate(requestDTO);
+        if (!violations.isEmpty()) {
+            String errorMsg = violations.stream()
+                    .map(ConstraintViolation::getMessage)
+                    .collect(Collectors.joining(", "));
+            throw new IllegalArgumentException("Datos inválidos: " + errorMsg);
+        }
+
+        if (!requestDTO.isValidRoute()) {
+            throw new IllegalArgumentException(
+                    "Ruta inválida: Origen y destino son iguales");
+        }
+
+        return requestDTO;
+    }
+
+    private boolean shouldSkipLine(int rowNumber, String line) {
+        return rowNumber == 1 || line == null || line.trim().isEmpty();
+    }
+
+    private FlightRequestDTO getRequestDTO(String line) {
+        String[] data = line.split(",");
+
+        if (data.length < 7) {
+            throw new IllegalArgumentException("Columnas insuficientes (se esperaban 7)");
+        }
+
+        String airline = data[0].trim();
+        String origin = data[1].trim();
+        String destination = data[2].trim();
+        LocalDate date = LocalDate.parse(data[3].trim());
+        LocalTime depHour = LocalTime.parse(data[4].trim());
+        LocalTime arrHour = LocalTime.parse(data[5].trim());
+        Double distance = Double.parseDouble(data[6].trim());
+
+        return new FlightRequestDTO(
+                airline, origin, destination, date, depHour, arrHour, distance
+        );
     }
 
     private void validationData(FlightRequestDTO flightRequestDTO) {
