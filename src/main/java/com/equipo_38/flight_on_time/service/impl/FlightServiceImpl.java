@@ -4,10 +4,13 @@ import com.equipo_38.flight_on_time.client.DataScienceGateway;
 import com.equipo_38.flight_on_time.dto.*;
 import com.equipo_38.flight_on_time.exception.BatchFileProcessingException;
 import com.equipo_38.flight_on_time.mapper.FlightPredictionMapper;
+import com.equipo_38.flight_on_time.model.PredictionFlight;
 import com.equipo_38.flight_on_time.repository.IFlightPredictionRepository;
 import com.equipo_38.flight_on_time.service.IAirlineService;
 import com.equipo_38.flight_on_time.service.IAirportService;
 import com.equipo_38.flight_on_time.service.IFlightService;
+import com.equipo_38.flight_on_time.utils.BatchResponseValidate;
+import com.equipo_38.flight_on_time.utils.BatchValidateData;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +24,11 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -50,61 +55,142 @@ public class FlightServiceImpl implements IFlightService {
     @Override
     public BatchPredictionDTO batchPrediction(MultipartFile file) {
 
-        List<BatchItemDTO> items = new ArrayList<>();
-        int rowNumber = 0;
+        List<BatchItemDTO> items;
 
         try (BufferedReader br = new BufferedReader(
                 new InputStreamReader(file.getInputStream(), StandardCharsets.UTF_8))) {
 
-            String line;
-            while ((line = br.readLine()) != null) {
-                rowNumber++;
+            AtomicInteger row = new AtomicInteger(2); // 1 = header, data inicia en 2
 
-                if (shouldSkipLine(rowNumber, line)) {
-                    continue;
-                }
-
-                BatchItemDTO item = safeProcessLine(line, rowNumber);
-                items.add(item);
-            }
+            items = br.lines()
+                    .skip(1)
+                    .map(line -> safeProcessLine(line, row.getAndIncrement()))
+                    .toList();
 
         } catch (IOException e) {
             throw new BatchFileProcessingException(
                     "Error fatal al procesar el archivo CSV");
         }
 
-        long successful = items.stream().filter(i -> "SUCCESS".equals(i.status())).count();
-        long failed = items.size() - successful;
+        // Construir batch SOLO de los SUCCESS
+        List<BatchValidateData> batchValidateData = items.stream()
+                .filter(i -> "SUCCESS".equals(i.getStatus()))
+                .map(i -> new BatchValidateData(
+                        i.getRowNumber(),
+                        i.getInput().airline(),
+                        i.getInput().origin(),
+                        i.getInput().destination()
+                ))
+                .toList();
+
+        // Validación en BD (1 query batch)
+        if (!batchValidateData.isEmpty()) {
+
+            List<BatchResponseValidate> batchResponseValidates =
+                    flightPredictionRepository.validateBatchData(batchValidateData);
+
+            Map<Integer, BatchResponseValidate> validationByRow =
+                    batchResponseValidates.stream()
+                            .collect(Collectors.toMap(
+                                    BatchResponseValidate::row,
+                                    Function.identity()
+                            ));
+            Map<String, String> errorMessages = Map.of(
+                    "AIRLINE_NOT_FOUND", "La aerolínea no existe",
+                    "ORIGIN_NOT_FOUND", "Aeropuerto de origen inválido",
+                    "DESTINATION_NOT_FOUND", "Aeropuerto de destino inválido",
+                    "ROUTE_NOT_FOUND", "La ruta no existe"
+            );
+
+            items.forEach(item -> {
+                if (!"SUCCESS".equals(item.getStatus())) {
+                    return;
+                }
+
+                BatchResponseValidate validation =
+                        validationByRow.get(item.getRowNumber());
+
+                if (validation != null && !validation.isValid()) {
+                    item.setStatus("FAILED");
+                    String message = errorMessages.getOrDefault(
+                            validation.errorCode(),
+                            "Error de validación en base de datos"
+                    );
+
+                    item.setErrorMessage(message);
+                }
+            });
+            items.forEach(item -> {
+                if (!"SUCCESS".equals(item.getStatus())) {
+                    return;
+                }
+
+                try {
+                    PredictionResponseDTO result =
+                            getPredictionResponse(item.getInput());
+
+                    item.setResult(result);
+
+                } catch (Exception ex) {
+                    item.setStatus("FAILED");
+                    item.setErrorMessage("Error Data Science Client");
+                }
+            });
+            List<PredictionFlight> predictionFlights =
+                    items.stream()
+                            .filter(i -> "SUCCESS".equals(i.getStatus()))
+                            .map(item ->
+                                    flightPredictionMapper.toEntity(
+                                            item.getInput(),
+                                            item.getResult()
+                                    )
+                            )
+                            .toList();
+            flightPredictionRepository.saveAll(predictionFlights);
+
+        }
+
+        long success = items.stream()
+                .filter(i -> "SUCCESS".equals(i.getStatus()))
+                .count();
+
+        long failed = items.stream()
+                .filter(i -> "FAILED".equals(i.getStatus()))
+                .count();
 
         return new BatchPredictionDTO(
                 items.size(),
-                (int) successful,
-                (int) failed,
+                success,
+                failed,
                 items
         );
     }
 
+
+    private PredictionResponseDTO getPredictionResponse(FlightRequestDTO flightRequestDTO){
+        PredictionDSResponseDTO predictionDSResponseDTO = dataScienceGateway.getPrediction(flightRequestDTO);
+        return flightPredictionMapper.toClientResponse(predictionDSResponseDTO);
+    }
+
     private BatchItemDTO safeProcessLine(String line, int rowNumber) {
         try {
+            if (line.isBlank()){
+                throw new IllegalArgumentException("line is blank");
+            }
             FlightRequestDTO requestDTO = parseAndValidate(line);
-            PredictionResponseDTO prediction = getPrediction(requestDTO);
 
-            return new BatchItemDTO(
-                    rowNumber,
-                    "SUCCESS",
-                    requestDTO,
-                    prediction,
-                    null
-            );
+            return BatchItemDTO.builder()
+                    .rowNumber(rowNumber)
+                    .status("SUCCESS")
+                    .input(requestDTO)
+                    .build();
 
         } catch (RuntimeException e) {
-            return new BatchItemDTO(
-                    rowNumber,
-                    "FAILED",
-                    null,
-                    null,
-                    e.getMessage()
-            );
+            return BatchItemDTO.builder()
+                    .rowNumber(rowNumber)
+                    .status("FAILED")
+                    .errorMessage(e.getLocalizedMessage())
+                    .build();
         }
     }
 
@@ -126,10 +212,6 @@ public class FlightServiceImpl implements IFlightService {
         }
 
         return requestDTO;
-    }
-
-    private boolean shouldSkipLine(int rowNumber, String line) {
-        return rowNumber == 1 || line == null || line.trim().isEmpty();
     }
 
     private FlightRequestDTO getRequestDTO(String line) {

@@ -1,7 +1,7 @@
 spring:
   profiles:
     #Profiles: dev, prod, compose, test
-    active: prod
+    active: prodOCI
   application:
     name: flight-on-time
     ##Cache configuration

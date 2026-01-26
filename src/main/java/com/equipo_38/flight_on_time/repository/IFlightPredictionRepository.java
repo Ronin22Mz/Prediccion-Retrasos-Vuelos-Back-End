@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface IFlightPredictionRepository extends JpaRepository<PredictionFlight, Long>, JpaSpecificationExecutor<PredictionFlight> {
-
+public interface IFlightPredictionRepository extends JpaRepository<PredictionFlight, Long>,
+        JpaSpecificationExecutor<PredictionFlight>, IFlightPredictionBatchRepository {
 
 }

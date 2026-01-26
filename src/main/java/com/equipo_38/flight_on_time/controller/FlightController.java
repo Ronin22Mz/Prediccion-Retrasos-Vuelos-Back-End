@@ -117,7 +117,7 @@ public class FlightController implements IStandardApiResponses {
     ) {
 
         if(file.isEmpty()){
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BatchPredictionDTO(0,0,0, Collections.emptyList()));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BatchPredictionDTO(0,0L,0L, Collections.emptyList()));
         }else{
             return ResponseEntity.status(HttpStatus.OK).body(flightService.batchPrediction(file));
         }

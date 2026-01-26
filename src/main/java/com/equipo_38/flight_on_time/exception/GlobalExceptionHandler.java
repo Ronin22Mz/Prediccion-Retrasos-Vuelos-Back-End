@@ -52,4 +52,11 @@ public class GlobalExceptionHandler {
                 .body(new ApiResponseError("Route not found", exception.getLocalizedMessage(),
                         httpServletRequest.getRequestURL().toString(), httpServletRequest.getMethod(), LocalDateTime.now()));
     }
+
+    @ExceptionHandler(BatchFileProcessingException.class)
+    public ResponseEntity<ApiResponseError> handlerBatchFileProcessingException(HttpServletRequest httpServletRequest, BatchFileProcessingException exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(new ApiResponseError("File Error", exception.getLocalizedMessage(),
+                        httpServletRequest.getRequestURL().toString(), httpServletRequest.getMethod(), LocalDateTime.now()));
+    }
 }
