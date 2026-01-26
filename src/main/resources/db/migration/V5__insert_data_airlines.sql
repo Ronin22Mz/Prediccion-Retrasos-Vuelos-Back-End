@@ -1,19 +1,20 @@
-INSERT INTO airlines (airline_name, airline_code)
-VALUES ('Alaska Airlines Inc.', 'AS'),
-       ('Allegiant Air', 'G4'),
-       ('American Airlines Inc.', 'AA'),
-       ('Delta Air Lines Inc.', 'DL'),
-       ('Endeavor Air Inc.', '9E'),
-       ('Envoy Air', 'MQ'),
-       ('ExpressJet Airlines LLC d/b/a aha!', 'EV'),
-       ('Frontier Airlines Inc.', 'F9'),
-       ('Hawaiian Airlines Inc.', 'HA'),
-       ('Horizon Air', 'QX'),
-       ('JetBlue Airways', 'B6'),
-       ('Mesa Airlines Inc.', 'YV'),
-       ('PSA Airlines Inc.', 'OH'),
-       ('Republic Airline', 'YX'),
-       ('SkyWest Airlines Inc.', 'OO'),
-       ('Southwest Airlines Co.', 'WN'),
-       ('Spirit Air Lines', 'NK'),
-       ('United Air Lines Inc.', 'UA');
+INSERT /*+ NO_PARALLEL */ ALL
+  INTO airlines (airline_name, airline_code) VALUES  ('Alaska Airlines Inc.', 'AS')
+  INTO airlines (airline_name, airline_code) VALUES  ('Allegiant Air', 'G4') 
+  INTO airlines (airline_name, airline_code) VALUES  ('American Airlines Inc.', 'AA') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Delta Air Lines Inc.', 'DL') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Endeavor Air Inc.', '9E') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Envoy Air', 'MQ') 
+  INTO airlines (airline_name, airline_code) VALUES  ('ExpressJet Airlines LLC d/b/a aha!', 'EV') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Frontier Airlines Inc.', 'F9') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Hawaiian Airlines Inc.', 'HA') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Horizon Air', 'QX') 
+  INTO airlines (airline_name, airline_code) VALUES  ('JetBlue Airways', 'B6') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Mesa Airlines Inc.', 'YV') 
+  INTO airlines (airline_name, airline_code) VALUES  ('PSA Airlines Inc.', 'OH') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Republic Airline', 'YX') 
+  INTO airlines (airline_name, airline_code) VALUES  ('SkyWest Airlines Inc.', 'OO') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Southwest Airlines Co.', 'WN') 
+  INTO airlines (airline_name, airline_code) VALUES  ('Spirit Air Lines', 'NK') 
+  INTO airlines (airline_name, airline_code) VALUES  ('United Air Lines Inc.', 'UA')
+SELECT * FROM dual;

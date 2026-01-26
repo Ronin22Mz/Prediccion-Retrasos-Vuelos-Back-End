@@ -11,7 +11,12 @@ import lombok.NoArgsConstructor;
 public class Route {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "routes_seq")
+    @SequenceGenerator(
+            name = "routes_seq",
+            sequenceName = "routes_seq",
+            allocationSize = 1
+    )
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

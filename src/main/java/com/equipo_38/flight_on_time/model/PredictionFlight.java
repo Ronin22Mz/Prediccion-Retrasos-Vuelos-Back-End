@@ -21,11 +21,16 @@ public class PredictionFlight {
 
     //inputs
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "prediction_flights_seq")
+    @SequenceGenerator(
+            name = "prediction_flights_seq",
+            sequenceName = "PREDICTION_FLIGHTS_SEQ",
+            allocationSize = 1
+    )
     private Long id;
 
     @CreatedDate
-    @Column(nullable = false, updatable = false)
+    @Column(name = "creation_date", nullable = false, updatable = false)
     private Instant creationDate;
 
     @Column(name = "airline", length = 2, nullable = false)
@@ -65,6 +70,7 @@ public class PredictionFlight {
 
     //outputs
     @Enumerated(EnumType.STRING)
+    @Column(name = "prediction_result", nullable = false)
     @NotNull
     private FlightStatus predictionResult;
 

@@ -16,7 +16,8 @@ import java.util.List;
 public class Airline {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airlines_seq")
+    @SequenceGenerator(name = "airlines_seq", sequenceName = "airlines_seq", allocationSize = 1)
     private Long id;
     @NotBlank
     @Size(min = 2, max = 2)

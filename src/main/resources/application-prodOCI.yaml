@@ -1,0 +1,92 @@
+# ==============================
+# Profile: prodOCI
+# Configuración para ENTORNO DE PRODUCCIÓN
+# Base de datos Oracle
+# ==============================
+
+spring:
+  # ------------------------------
+  # Configuración JPA / Hibernate
+  # ------------------------------
+  jpa:
+    # ⚠️ IMPORTANTE:
+    # Se desactiva Open Session In View en producción
+    # Obliga a manejar correctamente las transacciones
+    open-in-view: false
+
+    # No mostrar SQL en consola (performance + seguridad)
+    show-sql: false
+
+    properties:
+      hibernate:
+        # No formatear SQL (menor overhead)
+        format_sql: false
+
+        # No incluir comentarios SQL
+        use_sql_comments: false
+        dialect: org.hibernate.dialect.OracleDialect
+        # Evita consultas innecesarias de metadata JDBC
+        temp:
+          use_jdbc_metadata_defaults: false
+
+  # ------------------------------
+  # Configuración del DataSource
+  # ------------------------------
+  datasource:
+    # URL de Oracle
+    # Formato para Autonomous DB: jdbc:oracle:thin:@<host>:<port>/<service_name>
+    url: jdbc:oracle:thin:@${ORACLE_DB_URL}
+
+    # Credenciales por variables de entorno
+    username: ${ORACLE_DB_USERNAME}
+    password: ${ORACLE_DB_PASSWORD}
+
+    # Driver JDBC
+    driver-class-name: oracle.jdbc.OracleDriver
+
+    # ------------------------------
+    # Pool de conexiones HikariCP
+    # ------------------------------
+    hikari:
+      # Nombre del pool
+      pool-name: PredictionConnectionPool-PROD
+
+      # Ajusta según tu tier / número máximo de conexiones permitido
+      maximum-pool-size: 10
+
+      # Conexiones mínimas inactivas
+      minimum-idle: 2
+
+      # Tiempo máximo de inactividad (ms)
+      idle-timeout: 600000
+
+      # Tiempo máximo de vida de una conexión (ms)
+      max-lifetime: 1800000
+
+      # Tiempo máximo de espera para obtener conexión (ms)
+      connection-timeout: 30000
+
+      # En producción se desactiva detección de fugas
+      leakDetectionThreshold: 0
+
+  flyway:
+    baseline-on-migrate: true
+
+# ------------------------------
+# Configuración de logs
+# ------------------------------
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.type: WARN
+
+# ------------------------------
+# SpringDoc / Swagger
+# ------------------------------
+springdoc:
+  swagger-ui:
+    enabled: true
+  api-docs:
+    enabled: true

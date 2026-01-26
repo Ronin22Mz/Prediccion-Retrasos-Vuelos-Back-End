@@ -12,7 +12,12 @@ import lombok.NoArgsConstructor;
 public class AirlineOriginAirport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airline_origin_airport_seq")
+    @SequenceGenerator(
+            name = "airline_origin_airport_seq",
+            sequenceName = "airline_origin_airport_seq",
+            allocationSize = 1
+    )
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

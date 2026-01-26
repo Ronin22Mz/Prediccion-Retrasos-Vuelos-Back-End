@@ -9,13 +9,14 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
-@Table(name = "airports") //
-@Data // Genera getters, setters, toString, etc. automáticamente
+@Table(name = "airports")
+@Data
 @NoArgsConstructor
 public class Airport {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "airport_seq")
+    @SequenceGenerator(name = "airport_seq", sequenceName = "airports_seq", allocationSize = 1)
     private Long id;
 
     @Column(name = "city_code", nullable = false, length = 3)

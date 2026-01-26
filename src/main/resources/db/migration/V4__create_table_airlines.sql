@@ -1,6 +1,22 @@
 CREATE TABLE airlines
 (
-    id           BIGSERIAL PRIMARY KEY,
+    id           NUMBER PRIMARY KEY,
     airline_name VARCHAR(150) NOT NULL,
     airline_code VARCHAR(2)   NOT NULL
 );
+
+CREATE SEQUENCE airlines_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+CREATE OR REPLACE TRIGGER airlines_bi
+BEFORE INSERT ON airlines
+FOR EACH ROW
+BEGIN
+    IF :NEW.id IS NULL THEN
+SELECT airlines_seq.NEXTVAL INTO :NEW.id FROM dual;
+END IF;
+END;
+/

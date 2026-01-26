@@ -1,6 +1,22 @@
 CREATE TABLE airports
 (
-    id        BIGSERIAL PRIMARY KEY,
-    city_name VARCHAR(150) NOT NULL,
-    city_code VARCHAR(3)   NOT NULL
+    id NUMBER PRIMARY KEY,
+    city_name VARCHAR2(150) NOT NULL,
+    city_code VARCHAR2(3)   NOT NULL
 );
+
+CREATE SEQUENCE airports_seq
+    START WITH 1
+    INCREMENT BY 1
+    NOCACHE
+    NOCYCLE;
+
+CREATE OR REPLACE TRIGGER airports_bi
+BEFORE INSERT ON airports
+FOR EACH ROW
+BEGIN
+    IF :NEW.id IS NULL THEN
+SELECT airports_seq.NEXTVAL INTO :NEW.id FROM dual;
+END IF;
+END;
+/
