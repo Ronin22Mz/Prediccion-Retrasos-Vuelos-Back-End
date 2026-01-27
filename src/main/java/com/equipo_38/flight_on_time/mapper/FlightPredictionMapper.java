@@ -9,6 +9,9 @@ import com.equipo_38.flight_on_time.model.PredictionFlight;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Component
 public class FlightPredictionMapper {
@@ -26,13 +29,14 @@ public class FlightPredictionMapper {
             FlightRequestDTO request,
             PredictionResponseDTO response
     ) {
+        LocalDate fechaDummy = LocalDate.of(1970, 1, 1);
         PredictionFlight entity = new PredictionFlight();
         entity.setAirline(request.airline());
         entity.setOrigin(request.origin());
         entity.setDestination(request.destination());
-        entity.setDepartureDate(request.departureDate());
-        entity.setDepartureHour(request.departureHour());
-        entity.setArrivedHour(request.arrivedHour());
+        entity.setDepartureDate(LocalDateTime.of(request.departureDate(), LocalTime.of(0, 0)));
+        entity.setDepartureHour(LocalDateTime.of(fechaDummy, request.departureHour()));
+        entity.setArrivedHour(LocalDateTime.of(fechaDummy, request.arrivedHour()));
         entity.setDistanceKm(request.distanceKm());
         // ✅ elapsed time en minutos
         double elapsedMinutes = Duration.between(
@@ -58,9 +62,9 @@ public class FlightPredictionMapper {
                 predictionFlight.getAirline(),
                 predictionFlight.getOrigin(),
                 predictionFlight.getDestination(),
-                predictionFlight.getDepartureDate(),
-                predictionFlight.getDepartureHour(),
-                predictionFlight.getArrivedHour(),
+                predictionFlight.getDepartureDate().toLocalDate(),
+                predictionFlight.getDepartureHour().toLocalTime(),
+                predictionFlight.getArrivedHour().toLocalTime(),
                 predictionFlight.getDistanceKm(),
                 predictionFlight.getPredictionResult(),
                 predictionFlight.getProbability()

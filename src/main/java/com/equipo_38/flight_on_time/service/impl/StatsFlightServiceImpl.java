@@ -75,9 +75,9 @@ public class StatsFlightServiceImpl implements IStatsFlightService {
                 getAirlineName(f.getAirline(),airlines),
                 getCityName(f.getOrigin(),airports),
                 getCityName(f.getDestination(),airports),
-                f.getDepartureDate(),
-                f.getDepartureHour(),
-                f.getArrivedHour(),
+                f.getDepartureDate().toLocalDate(),
+                f.getDepartureHour().toLocalTime(),
+                f.getArrivedHour().toLocalTime(),
                 f.getDistanceKm(),
                 f.getPredictionResult(),
                 f.getProbability()

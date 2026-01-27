@@ -8,8 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -31,7 +30,7 @@ public class PredictionFlight {
 
     @CreatedDate
     @Column(name = "creation_date", nullable = false, updatable = false)
-    private Instant creationDate;
+    private LocalDateTime creationDate;
 
     @Column(name = "airline", length = 2, nullable = false)
     @NotBlank
@@ -48,15 +47,15 @@ public class PredictionFlight {
 
     @Column(name = "departure_date", nullable=false)
     @NotNull
-    private LocalDate departureDate;
+    private LocalDateTime departureDate;
 
     @Column(name = "departure_hour", nullable = false)
     @NotNull
-    private LocalTime departureHour;
+    private LocalDateTime departureHour;
 
     @Column(name = "arrived_hour", nullable = false)
     @NotNull
-    private LocalTime arrivedHour;
+    private LocalDateTime arrivedHour;
 
     @Column(name = "distance_km", nullable = false)
     @DecimalMax("20000")
